@@ -1,5 +1,6 @@
 package camila.peopleregistration.model.address.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import jakarta.persistence.Column;
@@ -30,9 +31,10 @@ public class AddressEntity {
     @NotNull
     @NotBlank(message = "CEP can not be null or empty")
     @ApiModelProperty(notes = "CEP of the user")
-    @Column(length = 8, nullable = false)
+    @Column(length = 10, nullable = false)
     private String cep;
     @ApiModelProperty(notes = "Street of the user")
+    @JsonProperty("logradouro")
     @Column(length = 100, nullable = false)
     private String street;
 
@@ -43,9 +45,11 @@ public class AddressEntity {
     private String number;
 
     @ApiModelProperty(notes = "Neighborhood of the user")
+    @JsonProperty("bairro")
     @Column(length = 100, nullable = false)
     private String neighborhood;
     @ApiModelProperty(notes = "City of the user")
+    @JsonProperty("localidade")
     @Column(length = 100, nullable = false)
     private String city;
     @ApiModelProperty(notes = "State of the user")

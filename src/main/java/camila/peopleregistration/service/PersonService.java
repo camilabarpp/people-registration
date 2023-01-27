@@ -24,6 +24,8 @@ public class PersonService {
 
     private final AddressRepository addressRepository;
 
+    private final AddressService addressService;
+
     public List<PersonResponse> findAll() {
         return fromEntityList(personRepository.findAll());
     }
@@ -33,6 +35,7 @@ public class PersonService {
     }
 
     public PersonResponse create(PersonRequest personRequest) {
+        addressService.searchCepAndSaveInDatabase(personRequest);
         return fromEntity(personRepository.save(toEntity(personRequest)));
     }
 

@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -22,5 +23,16 @@ public class PersonRequest {
     private final String status = "Ativo";
 
     private List<AddressEntity> addresses;
+
+    public void setAddresses(List<AddressEntity> addresses) {
+        this.addresses = addresses;
+    }
+
+    public static List<AddressEntity> toList(AddressEntity address) {
+        List<AddressEntity> addressList = new ArrayList<>();
+        addressList.add(address);
+        return addressList;
+    }
+
 
  }
