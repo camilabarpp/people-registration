@@ -13,6 +13,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import static jakarta.persistence.GenerationType.AUTO;
 
@@ -22,6 +24,8 @@ import static jakarta.persistence.GenerationType.AUTO;
 @NoArgsConstructor
 @ApiModel(value = "AddressEntity", description = "AddressEntity")
 @Entity
+@SQLDelete(sql = "UPDATE ADDRESS_ENTITY  SET status = 'Inativo' WHERE id = ?")
+@Where(clause = "status = 'Ativo'")
 public class AddressEntity {
 
     @Id
@@ -59,5 +63,8 @@ public class AddressEntity {
     @ApiModelProperty(notes = "Main address of the user")
     @Column(nullable = false)
     private Boolean mainAddress;
+
+    private final String status = "Ativo";
+
 
 }

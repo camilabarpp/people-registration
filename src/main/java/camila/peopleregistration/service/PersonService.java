@@ -1,6 +1,6 @@
 package camila.peopleregistration.service;
 
-import camila.peopleregistration.model.person.mapper.PersonMapper;
+import camila.peopleregistration.model.address.entity.AddressEntity;
 import camila.peopleregistration.model.person.request.PersonRequest;
 import camila.peopleregistration.model.person.response.PersonResponse;
 import camila.peopleregistration.repository.AddressRepository;
@@ -8,8 +8,6 @@ import camila.peopleregistration.repository.PersonRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
 import java.util.List;
 
@@ -35,11 +33,13 @@ public class PersonService {
     }
 
     public PersonResponse create(PersonRequest personRequest) {
-        addressService.searchCepAndSaveInDatabase(personRequest);
+        //Método que pesquisa o cep na api e salva no banco de AddressEntity
+        addressService.searchCep(personRequest);
         return fromEntity(personRepository.save(toEntity(personRequest)));
     }
 
     public PersonResponse update(Long id, PersonRequest personRequest) {
+        AddressEntity address = addressService.searchCep(personRequest);
         return fromEntity(personRepository.findById(id)
                 .map(personEntity -> {
                     personEntity.setId(id);
@@ -48,19 +48,21 @@ public class PersonService {
                     //Pesquisar no banco se já existe um endereço com este mesmo ID e não gerar um novo
                     addressRepository.findById(personEntity.getAddresses().get(0).getId()).map(addressEntity -> {
                         addressEntity.setId(personEntity.getAddresses().get(0).getId());
-                        addressEntity.setCep(personRequest.getAddresses().get(0).getCep());
-                        addressEntity.setStreet(personRequest.getAddresses().get(0).getStreet());
                         addressEntity.setNumber(personRequest.getAddresses().get(0).getNumber());
-                        addressEntity.setNeighborhood(personRequest.getAddresses().get(0).getNeighborhood());
-                        addressEntity.setCity(personRequest.getAddresses().get(0).getCity());
-                        addressEntity.setUf(personRequest.getAddresses().get(0).getUf());
                         addressEntity.setMainAddress(personRequest.getAddresses().get(0).getMainAddress());
+                        addressEntity.setCep(address.getCep());
+                        addressEntity.setStreet(address.getStreet());
+                        addressEntity.setNeighborhood(address.getNeighborhood());
+                        addressEntity.setCity(address.getCity());
+                        addressEntity.setUf(address.getUf());
                       return addressRepository.save(addressEntity);
                     });
                     return personRepository.save(personEntity);
                 })
                 .orElseThrow());
     }
+
+    //Fiz um soft delete, pois não acho interessante deletar completemento do banco
     public void deleteById(Long id) {
         personRepository.deleteById(id);
     }

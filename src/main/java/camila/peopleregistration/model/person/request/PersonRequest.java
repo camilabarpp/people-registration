@@ -1,7 +1,6 @@
 package camila.peopleregistration.model.person.request;
 
 import camila.peopleregistration.model.address.entity.AddressEntity;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
