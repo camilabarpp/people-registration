@@ -5,6 +5,8 @@ import camila.peopleregistration.model.person.request.PersonRequest;
 import camila.peopleregistration.model.person.response.PersonResponse;
 import lombok.experimental.UtilityClass;
 
+import java.util.List;
+
 @UtilityClass
 public class PersonMapper {
 
@@ -15,6 +17,12 @@ public class PersonMapper {
                 .birthdate(personEntity.getBirthdate())
                 .addresses(personEntity.getAddresses())
                 .build();
+    }
+
+    public static List<PersonResponse> fromEntityList(List<PersonEntity> personEntity) {
+        return personEntity.stream()
+                .map(PersonMapper::fromEntity)
+                .toList();
     }
 
     public static PersonEntity toEntity(PersonRequest personRequest) {

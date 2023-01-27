@@ -19,6 +19,7 @@ public class PersonRequest {
     @NotNull
     private String birthdate;
 
+    private final String status = "Ativo";
 
     private List<AddressEntity> addresses;
 

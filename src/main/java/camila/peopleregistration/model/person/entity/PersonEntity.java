@@ -3,6 +3,7 @@ package camila.peopleregistration.model.person.entity;
 import camila.peopleregistration.model.address.entity.AddressEntity;
 import io.swagger.annotations.ApiModel;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
@@ -17,7 +18,7 @@ import static jakarta.persistence.GenerationType.AUTO;
 @NoArgsConstructor
 @ApiModel(value = "PersonEntity", description = "PersonEntity")
 @Entity
-@SQLDelete(sql = "UPDATE Course SET status = 'Inativo' WHERE id = ?")
+@SQLDelete(sql = "UPDATE PERSON_ENTITY SET status = 'Inativo' WHERE id = ?")
 @Where(clause = "status = 'Ativo'")
 public class PersonEntity {
 
@@ -35,4 +36,6 @@ public class PersonEntity {
     @Column(length = 100, nullable = false)
     private List<AddressEntity> addresses;
 
+    @Column(length = 10, nullable = false)
+    private final String status = "Ativo";
 }

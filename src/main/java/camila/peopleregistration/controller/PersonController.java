@@ -29,23 +29,15 @@ public class PersonController {
 
     private final PersonService personService;
 
-    private final PersonRepository repos;
-
     @GetMapping
     @ApiOperation("Show all people")
-//    public Flux<PersonResponse> findAll() {
-//        return personService.findAll();
-//    }
-    public @ResponseBody List<PersonEntity> list() {
-        return repos.findAll();
+    public List<PersonResponse> findAll() {
+        return personService.findAll();
     }
 
 
     @GetMapping("/{id}")
     @ApiOperation("Show person by id")
-//    public Mono<PersonResponse> findById(@PathVariable String id) {
-//        return personService.findById(id);
-//    }
     public PersonResponse findById(@PathVariable Long id) {
         return personService.findById(id);
     }
@@ -53,18 +45,12 @@ public class PersonController {
     @PostMapping
     @ResponseStatus(CREATED)
     @ApiOperation("Create person")
-//    public Mono<PersonResponse> create(@RequestBody @Valid PersonRequest personRequest) {
-//        return personService.create(personRequest);
-//    }
-    public PersonResponse course(@RequestBody @Valid PersonRequest course) {
-        return PersonMapper.fromEntity(repos.save(PersonMapper.toEntity(course)));
+    public PersonResponse create(@RequestBody @Valid PersonRequest personRequest) {
+        return personService.create(personRequest);
     }
 
     @PutMapping("/{id}")
     @ApiOperation("Update person")
-//    public Mono<PersonResponse> update(@PathVariable String id, @RequestBody @Valid PersonRequest personRequest) {
-//        return personService.update(id, personRequest);
-//    }
     public PersonResponse update(@PathVariable Long id, @RequestBody @Valid PersonRequest personRequest) {
         return personService.update(id, personRequest);
     }
@@ -72,9 +58,6 @@ public class PersonController {
     @DeleteMapping("/{id}")
     @ResponseStatus(NO_CONTENT)
     @ApiOperation("Delete person by ID")
-//    public Mono<Void> deleteById(@PathVariable String id) {
-//        return personService.deleteById(id);
-//    }
     public void deleteById(@PathVariable Long id) {
         personService.deleteById(id);
     }
@@ -82,9 +65,6 @@ public class PersonController {
     @DeleteMapping
     @ResponseStatus(NO_CONTENT)
     @ApiOperation("Delete all people")
-//    public Mono<Void> deleteAll() {
-//        return personService.deleteAll();
-//    }
     public void deleteAll() {
         personService.deleteAll();
     }

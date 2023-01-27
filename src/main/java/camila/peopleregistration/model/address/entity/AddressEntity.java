@@ -2,12 +2,18 @@ package camila.peopleregistration.model.address.entity;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import static jakarta.persistence.GenerationType.*;
+import static jakarta.persistence.GenerationType.AUTO;
 
 @Data
 @Builder
@@ -19,6 +25,7 @@ public class AddressEntity {
 
     @Id
     @GeneratedValue(strategy = AUTO)
+    @ApiModelProperty(notes = "ID of the user")
     private Long id;
     @NotNull
     @NotBlank(message = "CEP can not be null or empty")
@@ -48,4 +55,5 @@ public class AddressEntity {
     @ApiModelProperty(notes = "Main address of the user")
     @Column(nullable = false)
     private Boolean mainAddress;
+
 }
