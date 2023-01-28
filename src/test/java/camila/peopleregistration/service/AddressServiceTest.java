@@ -4,7 +4,6 @@ import camila.peopleregistration.configuration.exception.NotFoundException;
 import camila.peopleregistration.integration.IntegrationCep;
 import camila.peopleregistration.model.address.entity.AddressEntity;
 import camila.peopleregistration.model.person.entity.PersonEntity;
-import camila.peopleregistration.model.person.mapper.PersonMapper;
 import camila.peopleregistration.model.person.request.PersonRequest;
 import camila.peopleregistration.repository.AddressRepository;
 import camila.peopleregistration.repository.PersonRepository;
@@ -18,15 +17,11 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
-import static camila.peopleregistration.model.person.mapper.PersonMapper.toEntity;
-import static camila.peopleregistration.service.stubs.AddressStubs.*;
-import static java.util.Optional.ofNullable;
+import static camila.peopleregistration.service.stubs.AddressStubs.personEntity;
+import static camila.peopleregistration.service.stubs.AddressStubs.personRequest;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(SpringExtension.class)
@@ -74,9 +69,7 @@ class AddressServiceTest {
     @DisplayName("Deve criar um novo endereço com sucesso")
     void createAddress_ShouldReturnNewAddress() {
         AddressEntity expected = AddressStubs.createAddress();
-
         AddressEntity addressEntity = AddressStubs.createAddress();
-
         PersonEntity personEntity = personEntity();
 
         when(integration.findCep("94020070")).thenReturn(expected);

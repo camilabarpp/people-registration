@@ -3,12 +3,7 @@ package camila.peopleregistration.model.address.entity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,7 +12,15 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 import org.hibernate.validator.constraints.Length;
 
-import static jakarta.persistence.GenerationType.AUTO;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import static javax.persistence.GenerationType.AUTO;
+
 
 @Data
 @Builder
@@ -31,7 +34,7 @@ public class AddressEntity {
 
     @Id
     @GeneratedValue(strategy = AUTO)
-    @ApiModelProperty(notes = "ID of the user")
+    @ApiModelProperty(notes = "ID of the address")
     private Long id;
     @NotNull
     @NotBlank(message = "CEP can not be null or empty")
@@ -39,30 +42,30 @@ public class AddressEntity {
     @Column(length = 10, nullable = false)
     @Length(min = 8, message = "teste")
     private String cep;
-    @ApiModelProperty(notes = "Street of the user")
+    @ApiModelProperty(notes = "Street of the person")
     @JsonProperty("logradouro")
     @Column(length = 100, nullable = false)
     private String street;
 
     @NotNull
     @NotBlank(message = "Number can not be null or empty")
-    @ApiModelProperty(notes = "Number of the user")
+    @ApiModelProperty(notes = "Number of the person")
     @Column(length = 10, nullable = false)
     private String number;
 
-    @ApiModelProperty(notes = "Neighborhood of the user")
+    @ApiModelProperty(notes = "Neighborhood of the person")
     @JsonProperty("bairro")
     @Column(length = 100, nullable = false)
     private String neighborhood;
-    @ApiModelProperty(notes = "City of the user")
+    @ApiModelProperty(notes = "City of the person")
     @JsonProperty("localidade")
     @Column(length = 100, nullable = false)
     private String city;
-    @ApiModelProperty(notes = "State of the user")
+    @ApiModelProperty(notes = "State of the person")
     @Column(length = 2, nullable = false)
     private String uf;
 
-    @ApiModelProperty(notes = "Main address of the user")
+    @ApiModelProperty(notes = "Main address of the person")
     @Column(nullable = false)
     private Boolean mainAddress;
 

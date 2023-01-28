@@ -2,6 +2,7 @@ package camila.peopleregistration.model.person.response;
 
 import camila.peopleregistration.model.address.entity.AddressEntity;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiOperation;
 import lombok.Builder;
 import lombok.Data;
 

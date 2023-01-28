@@ -2,15 +2,18 @@ package camila.peopleregistration.model.person.entity;
 
 import camila.peopleregistration.model.address.entity.AddressEntity;
 import io.swagger.annotations.ApiModel;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
+import javax.persistence.*;
 import java.util.List;
 
-import static jakarta.persistence.GenerationType.AUTO;
+import static javax.persistence.GenerationType.AUTO;
+
 
 @Builder
 @Data

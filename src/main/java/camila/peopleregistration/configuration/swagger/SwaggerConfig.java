@@ -26,8 +26,8 @@ public class SwaggerConfig {
     @Bean
     ApiInfo metaData() {
         return new ApiInfoBuilder()
-                .title("Cep API")
-                .description("\"Api de cadastro de pessoas com busca de CEP e temperatura na api externa\"")
+                .title("People Registration API")
+                .description("\"Api de cadastro de pessoas e endereço com busca de CEP na api de ViaCep\"")
                 .version("1.0.0")
                 .contact(new Contact("Camila Ramão Barpp",
                         "https://www.github.com/camilabarpp",
