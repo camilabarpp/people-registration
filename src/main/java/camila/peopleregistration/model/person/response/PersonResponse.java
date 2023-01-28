@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiOperation;
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.List;
 
@@ -15,7 +16,6 @@ public class PersonResponse {
     private Long id;
 
     private String name;
-    @JsonFormat(pattern = "dd/MM/yyyy")
     private String birthdate;
 
     private List<AddressEntity> addresses;

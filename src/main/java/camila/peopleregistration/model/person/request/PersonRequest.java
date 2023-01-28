@@ -24,7 +24,6 @@ public class PersonRequest {
     private String name;
     @NotBlank(message = "BirthDate can not be null or empty")
     @NotNull
-    @JsonFormat(pattern = "dd/MM/yyyy")
     @ApiModelProperty(notes = "Birthdate of the person")
     private String birthdate;
 
