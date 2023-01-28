@@ -37,7 +37,7 @@ public class PersonService {
     }
 
     public PersonResponse create(PersonRequest personRequest) {
-        //Método que pesquisa o cep na api e salva no banco de AddressEntity
+        //Método que pesquisa o cep na api e salva no cadastro da pessoa
         addressService.searchCep(personRequest);
         return fromEntity(personRepository.save(toEntity(personRequest)));
     }

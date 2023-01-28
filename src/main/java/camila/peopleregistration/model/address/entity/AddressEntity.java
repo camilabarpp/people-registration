@@ -15,6 +15,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
+import org.hibernate.validator.constraints.Length;
 
 import static jakarta.persistence.GenerationType.AUTO;
 
@@ -36,6 +37,7 @@ public class AddressEntity {
     @NotBlank(message = "CEP can not be null or empty")
     @ApiModelProperty(notes = "CEP of the user")
     @Column(length = 10, nullable = false)
+    @Length(min = 8, message = "teste")
     private String cep;
     @ApiModelProperty(notes = "Street of the user")
     @JsonProperty("logradouro")

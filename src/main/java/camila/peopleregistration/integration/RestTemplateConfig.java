@@ -1,5 +1,6 @@
 package camila.peopleregistration.integration;
 
+import camila.peopleregistration.configuration.exception.ErroHandler;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
@@ -15,7 +16,7 @@ public class RestTemplateConfig {
     public RestTemplate restTemplateCep() {
         return new RestTemplateBuilder()
                 .rootUri("https://viacep.com.br")
-//                .errorHandler(new ErroHandler())
+                .errorHandler(new ErroHandler())
                 .build();
     }
 }
