@@ -77,7 +77,7 @@ class AddressServiceTest {
         when(repository.save(addressEntity)).thenReturn(expected);
 
         personEntity.setAddresses(new ArrayList<>(personEntity.getAddresses()));
-        AddressEntity result = service.createAddress(addressEntity, 1L);
+        AddressEntity result = service.createNewAddress(addressEntity, 1L);
         assertEquals(expected, result);
     }
 

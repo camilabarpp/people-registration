@@ -37,11 +37,9 @@ public class AddressService {
         } else {
             throw new NotFoundException("CEP not found");
         }
-
-
     }
 
-    public AddressEntity createAddress(AddressEntity addressEntity, Long id) {
+    public AddressEntity createNewAddress(AddressEntity addressEntity, Long id) {
         if (personRepository.findById(id).isPresent()) {
             var newAddress = integration.findCep(addressEntity.getCep());
             newAddress.setNumber(addressEntity.getNumber());
@@ -61,5 +59,19 @@ public class AddressService {
         Optional<PersonEntity> person = personRepository.findById(id);
         return person.map(PersonEntity::getAddresses)
                 .orElseThrow(() -> new NotFoundException("Address not found"));
+    }
+
+    public AddressEntity updateAddressByPersonId(AddressEntity addressEntity, Long personId, Long addressId) {
+        var teste = repository.findById(addressId);
+        if (teste.isPresent()) {
+            var newAddress = integration.findCep(addressEntity.getCep());
+            newAddress.setNumber(addressEntity.getNumber());
+            newAddress.setMainAddress(addressEntity.getMainAddress());
+            newAddress.setId(addressId);
+            addressEntity = newAddress;
+            return repository.save(addressEntity);
+        } else {
+            throw new NotFoundException("Error to update a address, please check your data!");
+        }
     }
 }

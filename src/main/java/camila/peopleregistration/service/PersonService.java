@@ -59,6 +59,7 @@ public class PersonService {
                         addressEntity.setNeighborhood(address.getNeighborhood());
                         addressEntity.setCity(address.getCity());
                         addressEntity.setUf(address.getUf());
+
                       return addressRepository.save(addressEntity);
                     });
                     return personRepository.save(personEntity);
