@@ -5,23 +5,32 @@ import camila.peopleregistration.service.AddressService;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("v1/api/cep")
+@RequestMapping("v1/address")
 @AllArgsConstructor
 public class AddressController {
 
     private final AddressService service;
 
-//    @GetMapping("/{cep}")
-//    @ApiOperation("Get a cep")
-//    public AddressEntity getCep(@PathVariable String cep) {
-//        log.info("Mostrando dados sobre o CEP " + cep);
-//        return service.consultarCep(cep);
+    @GetMapping("/{cep}")
+    @ApiOperation("Get a cep")
+    public AddressEntity getCep(@PathVariable String cep) {
+        log.info("Mostrando dados do CEP " + cep);
+        return service.findCep(cep);
+    }
+
+    @PostMapping
+    public AddressEntity createAddress(@RequestBody AddressEntity addressEntity) {
+        return service.createAddress(addressEntity);
+    }
+
+//    @GetMapping("/idPerson")
+//    public List<AddressEntity> listPersonAddress(@PathVariable Long idPerson) {
+//        return service.listPersonAddress(idPerson);
 //    }
 }

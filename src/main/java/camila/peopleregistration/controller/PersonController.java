@@ -1,21 +1,18 @@
 package camila.peopleregistration.controller;
 
+import camila.peopleregistration.model.address.entity.AddressEntity;
 import camila.peopleregistration.model.person.entity.PersonEntity;
-import camila.peopleregistration.model.person.mapper.PersonMapper;
 import camila.peopleregistration.model.person.request.PersonRequest;
 import camila.peopleregistration.model.person.response.PersonResponse;
-import camila.peopleregistration.repository.PersonRepository;
 import camila.peopleregistration.service.PersonService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
@@ -47,6 +44,18 @@ public class PersonController {
     @ApiOperation("Create person")
     public PersonResponse create(@RequestBody @Valid PersonRequest personRequest) {
         return personService.create(personRequest);
+    }
+
+    @PostMapping("/teste/{id}")
+    @ResponseStatus(CREATED)
+    @ApiOperation("Create person")
+    public Optional<PersonEntity> createAnother(@RequestBody @Valid PersonRequest personRequest, @PathVariable Long id) {
+        return personService.createAnotherCep(id, personRequest);
+    }
+
+    @PostMapping("/enderecos")
+    public AddressEntity criarEndereco(@RequestBody AddressEntity endereco, @RequestParam Long id) {
+        return personService.criarEndereco(endereco, id);
     }
 
     @PutMapping("/{id}")

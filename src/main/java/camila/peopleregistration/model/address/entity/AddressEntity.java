@@ -1,12 +1,10 @@
 package camila.peopleregistration.model.address.entity;
 
+import camila.peopleregistration.model.person.entity.PersonEntity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -14,6 +12,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.SQLInsert;
 import org.hibernate.annotations.Where;
 
 import static jakarta.persistence.GenerationType.AUTO;
@@ -65,6 +64,4 @@ public class AddressEntity {
     private Boolean mainAddress;
 
     private final String status = "Ativo";
-
-
 }
