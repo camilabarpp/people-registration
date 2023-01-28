@@ -26,8 +26,6 @@ import static javax.persistence.GenerationType.IDENTITY;
 @NoArgsConstructor
 @ApiModel(value = "AddressEntity", description = "AddressEntity")
 @Entity
-@SQLDelete(sql = "UPDATE ADDRESS_ENTITY  SET status = 'Inativo' WHERE id = ?")
-@Where(clause = "status = 'Ativo'")
 public class AddressEntity {
 
     @Id
@@ -66,6 +64,4 @@ public class AddressEntity {
     @ApiModelProperty(notes = "Main address of the person")
     @Column(nullable = false)
     private Boolean mainAddress;
-
-    private final String status = "Ativo";
 }

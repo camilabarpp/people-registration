@@ -74,4 +74,14 @@ public class AddressService {
             throw new NotFoundException("Error to update a address, please check your data!");
         }
     }
+
+    public AddressEntity deleteAddressByPersonId(Long personId, Long addresId) {
+        var address = repository.findById(addresId);
+        if (address.isPresent()) {
+            repository.deleteById(addresId);
+            return address.get();
+        } else {
+            throw new NotFoundException("Error to delete a address, please check your data!");
+        }
+    }
 }
