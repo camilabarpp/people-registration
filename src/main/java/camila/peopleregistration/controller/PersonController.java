@@ -32,7 +32,6 @@ public class PersonController {
         return personService.findAll();
     }
 
-
     @GetMapping("/{id}")
     @ApiOperation("Show person by id")
     public PersonResponse findById(@PathVariable Long id) {
@@ -44,18 +43,6 @@ public class PersonController {
     @ApiOperation("Create person")
     public PersonResponse create(@RequestBody @Valid PersonRequest personRequest) {
         return personService.create(personRequest);
-    }
-
-    @PostMapping("/teste/{id}")
-    @ResponseStatus(CREATED)
-    @ApiOperation("Create person")
-    public Optional<PersonEntity> createAnother(@RequestBody @Valid PersonRequest personRequest, @PathVariable Long id) {
-        return personService.createAnotherCep(id, personRequest);
-    }
-
-    @PostMapping("/enderecos")
-    public AddressEntity criarEndereco(@RequestBody AddressEntity endereco, @RequestParam Long id) {
-        return personService.criarEndereco(endereco, id);
     }
 
     @PutMapping("/{id}")

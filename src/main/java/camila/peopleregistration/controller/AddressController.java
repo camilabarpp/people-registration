@@ -1,6 +1,7 @@
 package camila.peopleregistration.controller;
 
 import camila.peopleregistration.model.address.entity.AddressEntity;
+import camila.peopleregistration.repository.AddressRepository;
 import camila.peopleregistration.service.AddressService;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
@@ -17,20 +18,14 @@ public class AddressController {
 
     private final AddressService service;
 
-    @GetMapping("/{cep}")
-    @ApiOperation("Get a cep")
-    public AddressEntity getCep(@PathVariable String cep) {
-        log.info("Mostrando dados do CEP " + cep);
-        return service.findCep(cep);
+    @PostMapping("/{id}")
+    public AddressEntity criarEndereco(@RequestBody AddressEntity endereco, @PathVariable Long id) {
+        return service.createAddress(endereco, id);
     }
 
-    @PostMapping
-    public AddressEntity createAddress(@RequestBody AddressEntity addressEntity) {
-        return service.createAddress(addressEntity);
+    @GetMapping("/{id}/addresses")
+    @ApiOperation("Show all addresses by person id")
+    public List<AddressEntity> getAddressesByPersonId(@PathVariable Long id) {
+        return service.getAddressesByPersonId(id);
     }
-
-//    @GetMapping("/idPerson")
-//    public List<AddressEntity> listPersonAddress(@PathVariable Long idPerson) {
-//        return service.listPersonAddress(idPerson);
-//    }
 }

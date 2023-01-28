@@ -1,10 +1,12 @@
 package camila.peopleregistration.model.person.mapper;
 
+import camila.peopleregistration.model.address.entity.AddressEntity;
 import camila.peopleregistration.model.person.entity.PersonEntity;
 import camila.peopleregistration.model.person.request.PersonRequest;
 import camila.peopleregistration.model.person.response.PersonResponse;
 import lombok.experimental.UtilityClass;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @UtilityClass
@@ -31,5 +33,11 @@ public class PersonMapper {
                 .birthdate(personRequest.getBirthdate())
                 .addresses(personRequest.getAddresses())
                 .build();
+    }
+
+    public static List<AddressEntity> toList(AddressEntity address) {
+        List<AddressEntity> addressList = new ArrayList<>();
+        addressList.add(address);
+        return addressList;
     }
 }

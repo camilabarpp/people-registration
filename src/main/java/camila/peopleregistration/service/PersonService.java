@@ -42,30 +42,6 @@ public class PersonService {
         return fromEntity(personRepository.save(toEntity(personRequest)));
     }
 
-    @Transactional
-    public Optional<PersonEntity> createAnotherCep(Long id, PersonRequest personRequest) {
-//        AddressEntity address1 =  addressService.searchAnotherCep(personRequest);
-//        return personRepository.findById(id).map(personEntity -> {
-//            personEntity.setAddresses(PersonRequest.toList(address1));
-//            return personEntity;
-//        });
-        AddressEntity address1 =  addressService.searchAnotherCep(personRequest);
-        return personRepository.findById(id).map(personEntity -> {
-            personEntity.setAddresses(PersonRequest.toList(address1));
-            return personEntity;
-        });
-    }
-
-    @Transactional
-    public AddressEntity criarEndereco(AddressEntity endereco, Long id) {
-        personRepository.findById(id).map(teste -> {
-            teste.getAddresses().add(0, endereco);
-            return teste;
-        });
-
-        return addressRepository.save(endereco);
-    }
-
     public PersonResponse update(Long id, PersonRequest personRequest) {
         AddressEntity address = addressService.searchCep(personRequest);
         return fromEntity(personRepository.findById(id)
