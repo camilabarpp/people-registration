@@ -23,8 +23,6 @@ Gsrc/main/java/camila/peopleregistration/integration/IntegrationCep.java,5/a/5a
 Qsrc/main/java/camila/peopleregistration/model/person/response/PersonResponse.java,c/8/c8a9822cdb3d1f99fb388be6e059c75c3f7f08a8
 €
 Psrc/main/java/camila/peopleregistration/configuration/swagger/SwaggerConfig.java,d/f/df2dfc52f79cbc24e7f441e3444763e40aa917e8
-<
-build.gradle,f/0/f07866736216be0ee2aba49e392191aeae700a35
 x
 Hsrc/main/java/camila/peopleregistration/controller/PersonController.java,c/1/c1eb4ac663c5870fa67bff757fd671de6290d5e9
 }

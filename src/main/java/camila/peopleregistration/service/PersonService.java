@@ -1,5 +1,6 @@
 package camila.peopleregistration.service;
 
+import camila.peopleregistration.configuration.exception.NotFoundException;
 import camila.peopleregistration.model.address.entity.AddressEntity;
 import camila.peopleregistration.model.person.request.PersonRequest;
 import camila.peopleregistration.model.person.response.PersonResponse;
@@ -29,7 +30,7 @@ public class PersonService {
     }
 
     public PersonResponse findById(Long id) {
-        return fromEntity(personRepository.findById(id).orElseThrow());
+        return fromEntity(personRepository.findById(id).orElseThrow(() -> new NotFoundException("Person not found")));
     }
 
     public PersonResponse create(PersonRequest personRequest) {
@@ -57,14 +58,17 @@ public class PersonService {
                         addressEntity.setUf(address.getUf());
 
                       return addressRepository.save(addressEntity);
-                    });
+                    }).orElseThrow(() -> new NotFoundException("Address not found"));
                     return personRepository.save(personEntity);
                 })
-                .orElseThrow());
+                .orElseThrow( () -> new NotFoundException("Person not found")));
     }
 
     //Fiz um soft delete, pois não acho interessante deletar completemento do banco
     public void deleteById(Long id) {
+        if (!personRepository.existsById(id)) {
+            throw new NotFoundException("Person not found");
+        }
         personRepository.deleteById(id);
     }
 
