@@ -4,7 +4,7 @@ import camila.peopleregistration.configuration.exception.NotFoundException;
 import camila.peopleregistration.model.address.entity.AddressEntity;
 import camila.peopleregistration.repository.AddressRepository;
 import camila.peopleregistration.service.AddressService;
-import camila.peopleregistration.service.stubs.AddressStubs;
+import camila.peopleregistration.stubs.AddressStubs;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

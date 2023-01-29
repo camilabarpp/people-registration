@@ -7,7 +7,7 @@ import camila.peopleregistration.model.person.entity.PersonEntity;
 import camila.peopleregistration.model.person.request.PersonRequest;
 import camila.peopleregistration.repository.AddressRepository;
 import camila.peopleregistration.repository.PersonRepository;
-import camila.peopleregistration.service.stubs.AddressStubs;
+import camila.peopleregistration.stubs.AddressStubs;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static camila.peopleregistration.service.stubs.AddressStubs.*;
+import static camila.peopleregistration.stubs.AddressStubs.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -108,7 +108,11 @@ class AddressServiceTest {
 
         personEntity.setAddresses(new ArrayList<>(personEntity.getAddresses()));
         AddressEntity result = service.createNewAddress(addressEntity, 1L);
+
+        assertNotNull(expected);
         assertEquals(expected, result);
+        assertEquals(2, personEntity.getAddresses().size());
+        verify(repository, times(1)).save(expected);
     }
 
     @Test
@@ -119,9 +123,9 @@ class AddressServiceTest {
         when(repository.findById(id)).thenReturn(Optional.empty());
 
         assertThrows(NotFoundException.class, () -> service.createNewAddress(address, id));
-        verify(personRepository, times(1)).findById(id);
-        verify(integration, times(0)).findCep(anyString());
-        verify(repository, times(0)).save(any(AddressEntity.class));
+        verify(integration, never()).findCep(anyString());
+        verify(repository, never()).save(any(AddressEntity.class));
+        verify(repository, never()).save(address);
     }
 
     @Test
@@ -144,6 +148,9 @@ class AddressServiceTest {
         var result = service.updateAddressByPersonId(olderAddress, personId, addressId);
 
         assertEquals(addressUpdated, result);
+        verify(repository, times(1)).findById(addressId);
+        verify(integration, times(1)).findCep(cep);
+        verify(repository, times(1)).save(addressUpdated);
     }
 
     @Test
@@ -159,8 +166,8 @@ class AddressServiceTest {
                 service.updateAddressByPersonId(addressEntity, personId, addressId));
 
         verify(repository, times(1)).findById(addressId);
-        verify(integration, times(0)).findCep(addressEntity.getCep());
-        verify(repository, times(0)).save(addressEntity);
+        verify(integration, never()).findCep(addressEntity.getCep());
+        verify(repository, never()).save(addressEntity);
     }
 
     @Test
@@ -188,7 +195,7 @@ class AddressServiceTest {
 
         assertThrows(NotFoundException.class, () -> service.deleteAddressByPersonId(personId, addressId));
         verify(repository, times(1)).findById(addressId);
-        verify(repository, times(0)).deleteById(addressId);
+        verify(repository, never()).deleteById(addressId);
     }
 
 }

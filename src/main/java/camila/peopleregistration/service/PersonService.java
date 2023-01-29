@@ -1,19 +1,15 @@
 package camila.peopleregistration.service;
 
 import camila.peopleregistration.model.address.entity.AddressEntity;
-import camila.peopleregistration.model.person.entity.PersonEntity;
 import camila.peopleregistration.model.person.request.PersonRequest;
 import camila.peopleregistration.model.person.response.PersonResponse;
 import camila.peopleregistration.repository.AddressRepository;
 import camila.peopleregistration.repository.PersonRepository;
-import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static camila.peopleregistration.model.person.mapper.PersonMapper.*;
 

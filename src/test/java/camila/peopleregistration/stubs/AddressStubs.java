@@ -1,4 +1,4 @@
-package camila.peopleregistration.service.stubs;
+package camila.peopleregistration.stubs;
 
 import camila.peopleregistration.model.address.entity.AddressEntity;
 import camila.peopleregistration.model.person.entity.PersonEntity;
