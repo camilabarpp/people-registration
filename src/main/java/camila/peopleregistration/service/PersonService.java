@@ -26,22 +26,22 @@ public class PersonService {
     private final AddressService addressService;
 
     public List<PersonResponse> findAll() {
-        return fromEntityList(personRepository.findAll());
+        return responseFromEntityList(personRepository.findAll());
     }
 
     public PersonResponse findById(Long id) {
-        return fromEntity(personRepository.findById(id).orElseThrow(() -> new NotFoundException("Person not found")));
+        return entityToRespopnse(personRepository.findById(id).orElseThrow(() -> new NotFoundException("Person not found")));
     }
 
     public PersonResponse create(PersonRequest personRequest) {
         //Método que pesquisa o cep na api e salva no cadastro da pessoa
         addressService.searchCep(personRequest);
-        return fromEntity(personRepository.save(toEntity(personRequest)));
+        return entityToRespopnse(personRepository.save(requestToEntity(personRequest)));
     }
 
     public PersonResponse update(Long id, PersonRequest personRequest) {
         AddressEntity address = addressService.searchCep(personRequest);
-        return fromEntity(personRepository.findById(id)
+        return entityToRespopnse(personRepository.findById(id)
                 .map(personEntity -> {
                     personEntity.setId(id);
                     personEntity.setName(personRequest.getName());

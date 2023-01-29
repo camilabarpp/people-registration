@@ -17,6 +17,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.Arrays;
 import java.util.List;
@@ -68,10 +69,16 @@ class AddressControllerTest {
         );
         when(service.getAddressesByPersonId(personId)).thenReturn(addresses);
 
+        ObjectMapper mapper = new ObjectMapper();
+
+        var expect = mapper.writeValueAsString(addresses);
+
         mvc.perform(get(url, personId))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(APPLICATION_JSON))
-                .andExpect(jsonPath("$", hasSize(2)));
+                .andExpect(jsonPath("$", hasSize(2)))
+                .andExpect(content().json(expect))
+                .andReturn();
 
         verify(service, times(1)).getAddressesByPersonId(personId);
     }
@@ -83,7 +90,7 @@ class AddressControllerTest {
 
         when(service.getAddressesByPersonId(personId)).thenThrow(new NotFoundException("Address not found"));
 
-        mvc.perform(get(url, personId))
+        mvc.perform(MockMvcRequestBuilders.get(url, personId))
                 .andExpect(status().isNotFound())
                 .andExpect(content().contentTypeCompatibleWith(APPLICATION_JSON))
                 .andExpect(jsonPath("$.timestamp").exists())
@@ -207,8 +214,6 @@ class AddressControllerTest {
         doThrow(new NotFoundException("Error to delete a address, please check your data!"))
                 .when(service)
                 .deleteAddressByPersonId(personId, addressId);
-
-        ObjectMapper mapper = new ObjectMapper();
 
         mvc.perform(delete(url + "/{addressId}", personId, addressId))
                 .andExpect(status().isNotFound())
