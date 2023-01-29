@@ -16,7 +16,6 @@ import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-
 @Builder
 @Data
 @AllArgsConstructor

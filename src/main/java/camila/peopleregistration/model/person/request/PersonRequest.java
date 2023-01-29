@@ -1,13 +1,10 @@
 package camila.peopleregistration.model.person.request;
 
 import camila.peopleregistration.model.address.entity.AddressEntity;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -16,7 +13,6 @@ import java.util.List;
 @Getter
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
 public class PersonRequest {
     @NotNull
     @NotBlank(message = "Name can not be null or empty")

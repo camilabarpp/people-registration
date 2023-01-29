@@ -39,6 +39,12 @@ public class AddressService {
         }
     }
 
+    public List<AddressEntity> getAddressesByPersonId(Long id) {
+        Optional<PersonEntity> person = personRepository.findById(id);
+        return person.map(PersonEntity::getAddresses)
+                .orElseThrow(() -> new NotFoundException("Address not found"));
+    }
+
     public AddressEntity createNewAddress(AddressEntity addressEntity, Long id) {
         if (personRepository.findById(id).isPresent()) {
             var newAddress = integration.findCep(addressEntity.getCep());
@@ -55,15 +61,9 @@ public class AddressService {
         }
     }
 
-    public List<AddressEntity> getAddressesByPersonId(Long id) {
-        Optional<PersonEntity> person = personRepository.findById(id);
-        return person.map(PersonEntity::getAddresses)
-                .orElseThrow(() -> new NotFoundException("Address not found"));
-    }
-
     public AddressEntity updateAddressByPersonId(AddressEntity addressEntity, Long personId, Long addressId) {
-        var teste = repository.findById(addressId);
-        if (teste.isPresent()) {
+        var address = repository.findById(addressId);
+        if (address.isPresent()) {
             var newAddress = integration.findCep(addressEntity.getCep());
             newAddress.setNumber(addressEntity.getNumber());
             newAddress.setMainAddress(addressEntity.getMainAddress());
@@ -75,11 +75,10 @@ public class AddressService {
         }
     }
 
-    public AddressEntity deleteAddressByPersonId(Long personId, Long addresId) {
+    public void deleteAddressByPersonId(Long personId, Long addresId) {
         var address = repository.findById(addresId);
         if (address.isPresent()) {
             repository.deleteById(addresId);
-            return address.get();
         } else {
             throw new NotFoundException("Error to delete a address, please check your data!");
         }
