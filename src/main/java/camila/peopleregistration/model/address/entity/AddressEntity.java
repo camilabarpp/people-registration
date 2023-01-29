@@ -32,8 +32,8 @@ public class AddressEntity {
     @GeneratedValue(strategy = IDENTITY)
     @ApiModelProperty(notes = "ID of the address")
     private Long id;
-    @NotNull
-    @NotBlank(message = "CEP can not be null or empty")
+
+    @NotBlank
     @ApiModelProperty(notes = "CEP of the user")
     @Column(length = 10, nullable = false)
     @Length(min = 8, message = "teste")
@@ -43,8 +43,7 @@ public class AddressEntity {
     @Column(length = 100, nullable = false)
     private String street;
 
-    @NotNull
-    @NotBlank(message = "Number can not be null or empty")
+    @NotBlank
     @ApiModelProperty(notes = "Number of the person")
     @Column(length = 10, nullable = false)
     private String number;

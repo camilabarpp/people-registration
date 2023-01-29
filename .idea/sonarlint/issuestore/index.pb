@@ -9,8 +9,6 @@ Psrc/main/java/camila/peopleregistration/configuration/exception/ErroHandler.jav
 Vsrc/main/java/camila/peopleregistration/configuration/exception/NotFoundException.java,2/3/232da11d8faa5d27d0f96a0a9140d0a8a7205b33
 ê
 `src/main/java/camila/peopleregistration/configuration/exception/errorresponse/ErrorResponse.java,c/1/c16d102a9298a172398c2934852b51bfae38e7d5
-à
-Xsrc/main/java/camila/peopleregistration/configuration/exception/ApiExceptionHandler.java,d/6/d6705389ff4a11616a31a9972b38ddeb48d9a888
 y
 Isrc/main/java/camila/peopleregistration/repository/AddressRepository.java,6/f/6fc59a56ec7d870ce6212912b4dffbbd3bf0cadc
 x
@@ -29,7 +27,3 @@ Hsrc/main/java/camila/peopleregistration/controller/PersonController.java,c/1/c
 Msrc/main/java/camila/peopleregistration/model/person/entity/PersonEntity.java,0/1/013bc6d06ce6754adaaeab5d8d258e94c985c465
 }
 Msrc/main/java/camila/peopleregistration/model/person/mapper/PersonMapper.java,2/7/276a1c5e51e5a64f609865f14ef8a3861dfc5dc9
-
-Osrc/main/java/camila/peopleregistration/model/person/request/PersonRequest.java,0/c/0c498f8f550aac1ec3a3907aca0b5b198ed3007b
-
-Osrc/main/java/camila/peopleregistration/model/address/entity/AddressEntity.java,e/b/ebf791c52548ba2955c7828deb91c34118d99bfb

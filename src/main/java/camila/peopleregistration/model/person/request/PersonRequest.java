@@ -14,12 +14,10 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 public class PersonRequest {
-    @NotNull
     @NotBlank(message = "Name can not be null or empty")
     @ApiModelProperty(notes = "Name of the person")
     private String name;
     @NotBlank(message = "BirthDate can not be null or empty")
-    @NotNull
     @ApiModelProperty(notes = "Birthdate of the person")
     private String birthdate;
 
