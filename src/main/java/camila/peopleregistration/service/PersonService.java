@@ -45,7 +45,8 @@ public class PersonService {
                     personEntity.setName(personRequest.getName());
                     personEntity.setBirthdate(personRequest.getBirthdate());
                     addressRepository.findById(personEntity.getAddresses().get(0).getId())
-                            .map(addressEntity -> updateAddressEntity(addressEntity, personRequest)).orElseThrow(() -> new NotFoundException("Address not found"));
+                            .map(addressEntity -> updateAddressEntity(addressEntity, personRequest))
+                            .orElseThrow(() -> new NotFoundException("Address not found"));
                     return personRepository.save(personEntity);
                 })
                 .orElseThrow( () -> new NotFoundException("Person not found")));
@@ -61,9 +62,7 @@ public class PersonService {
         return address;
     }
 
-
-
-                //Fiz um soft delete, pois não acho interessante deletar completemento do banco
+    //Fiz um soft delete, pois não acho interessante deletar completamente do banco
     public void deleteById(Long id) {
         if (!personRepository.existsById(id)) {
             throw new NotFoundException("Person not found");

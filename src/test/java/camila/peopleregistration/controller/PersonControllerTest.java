@@ -1,8 +1,6 @@
 package camila.peopleregistration.controller;
 
 import camila.peopleregistration.configuration.exception.NotFoundException;
-import camila.peopleregistration.model.address.entity.AddressEntity;
-import camila.peopleregistration.model.person.entity.PersonEntity;
 import camila.peopleregistration.model.person.request.PersonRequest;
 import camila.peopleregistration.model.person.response.PersonResponse;
 import camila.peopleregistration.repository.AddressRepository;
@@ -14,7 +12,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -31,7 +28,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -64,7 +61,6 @@ class PersonControllerTest {
     @Test
     @DisplayName("Deve procurar todas as pessoas")
     void shouldFindAllPeople() throws Exception {
-        // Arrange
         List<PersonResponse> expectedPeople = Arrays.asList(
                 personResponse(),
                 personResponse()
@@ -108,6 +104,7 @@ class PersonControllerTest {
     }
 
     @Test
+    @DisplayName("Deve atualizar uma pessoa com sucesso")
     void shouldUpdateAPErsonWithSuccess() throws Exception {
         Long id = 1L;
         PersonRequest personRequest = personRequest();
@@ -123,30 +120,25 @@ class PersonControllerTest {
 
 
     @Test
-    void testDelete() throws Exception {
-        // Arrange
+    @DisplayName("Deve deletar uma pessoa com sucesso")
+    void shouldDeleteAPersonByIDWithSuccess() throws Exception {
         Long id = 1L;
 
-        // Act
-        MvcResult result = mvc.perform(MockMvcRequestBuilders.delete("/v1/person/{id}", id))
+        MvcResult result = mvc.perform(delete("/v1/person/{id}", id))
                 .andExpect(status().isNoContent())
                 .andReturn();
 
-        // Assert
         String response = result.getResponse().getContentAsString();
         assertThat(response).isEmpty();
     }
 
     @Test
-    void testDeleteAll() throws Exception {
-        // Arrange
-
-        // Act
-        MvcResult result = mvc.perform(MockMvcRequestBuilders.delete("/v1/person/"))
+    @DisplayName("Deve deletar todas as pessoas com suceso")
+    void shouldDeleteAllPeople() throws Exception {
+        MvcResult result = mvc.perform(delete("/v1/person/"))
                 .andExpect(status().isNoContent())
                 .andReturn();
 
-        // Assert
         String response = result.getResponse().getContentAsString();
         assertThat(response).isEmpty();
     }
@@ -168,13 +160,11 @@ class PersonControllerTest {
     @Test
     @DisplayName("Deve lançar NotFoundException quanto tentar deletar uma pessoa que não existe")
     void shouldThrowNotFoundExceptionWhenDeletePerson() throws Exception {
-        // Arrange
         Long id = 1L;
 
         doThrow(new NotFoundException("Person not found")).when(personService).deleteById(id);
 
-        // Act
-        MvcResult result = mvc.perform(MockMvcRequestBuilders.delete("/v1/person/{id}", id))
+        MvcResult result = mvc.perform(delete("/v1/person/{id}", id))
                 .andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.timestamp").exists())
                 .andExpect(jsonPath("$.message").value("Person not found"))
@@ -182,7 +172,6 @@ class PersonControllerTest {
                 .andExpect(jsonPath("$.parameter").value("NotFoundException"))
                 .andReturn();
 
-        // Assert
         String response = result.getResponse().getContentAsString();
         assertThat(response).contains("Person not found");
     }

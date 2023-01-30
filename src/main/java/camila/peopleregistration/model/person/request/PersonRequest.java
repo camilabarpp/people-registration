@@ -22,9 +22,6 @@ public class PersonRequest {
     @ApiModelProperty(notes = "Birthdate of the person")
     private String birthdate;
 
-    @ApiModelProperty(notes = "Status of the person")
-    private final String status = "Ativo";
-
     @ApiModelProperty(notes = "Address of the person")
     private List<AddressEntity> addresses;
 
