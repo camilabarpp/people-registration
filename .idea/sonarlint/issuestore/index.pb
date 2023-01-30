@@ -5,8 +5,6 @@ Jsrc/main/java/camila/peopleregistration/PeopleRegistrationApplication.java,e/2
 Ksrc/main/java/camila/peopleregistration/integration/RestTemplateConfig.java,a/3/a30e98f7afd24333e75048e3fa9447b400d86f86
 Ä
 Psrc/main/java/camila/peopleregistration/configuration/exception/ErroHandler.java,e/0/e0b6eaa8a1a233ef1f80730f8f96a289f55d1b0f
-Ü
-Vsrc/main/java/camila/peopleregistration/configuration/exception/NotFoundException.java,2/3/232da11d8faa5d27d0f96a0a9140d0a8a7205b33
 ê
 `src/main/java/camila/peopleregistration/configuration/exception/errorresponse/ErrorResponse.java,c/1/c16d102a9298a172398c2934852b51bfae38e7d5
 y
