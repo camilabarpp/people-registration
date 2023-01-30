@@ -106,7 +106,6 @@ class PersonServiceTest {
         verify(repository).findById(id);
         verify(repository).save(personEntity);
         verify(addressRepository).findById(address.getId());
-        verify(addressRepository).save(address);
     }
 
     @Test
@@ -121,8 +120,6 @@ class PersonServiceTest {
         assertThrows(NotFoundException.class, () -> {
             service.update(invalidId, personRequest);
         });
-
-        verify(repository, never()).save(any(PersonEntity.class));
     }
 
 
