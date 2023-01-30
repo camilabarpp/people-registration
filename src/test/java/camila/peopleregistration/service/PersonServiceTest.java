@@ -14,6 +14,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import javax.validation.ConstraintViolationException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -140,13 +141,25 @@ class PersonServiceTest {
 
 
     @Test
-    @DisplayName("Deve lançcar MethodArgumentNotValidException quanto estiver faltando dados para salvar uma pessoa")
-    void save_ShouldThrowMethodArgumentNotValidException() {
+    @DisplayName("Deve lançar NullPointerException quanto estiver faltando dados para salvar uma pessoa")
+    void save_ShouldThrowNullPointerException() {
         var request = new PersonRequest();
 
         when(repository.findById(anyLong())).thenReturn(empty());
 
         assertThrows(NullPointerException.class, () -> service.create(request));
+    }
+
+    @Test
+    @DisplayName("Deve lançar ConstraintViolationException quanto estiver faltando dados para salvar uma pessoa")
+    void save_ShouldThrowConstraintViolationException() {
+        var request = PersonRequest.builder()
+                .addresses(List.of(createAddressWithNumber()))
+                .build();
+
+        when(repository.save(requestToEntity(request))).thenThrow(ConstraintViolationException.class);
+
+        assertThrows(ConstraintViolationException.class, () -> service.create(request));
     }
 
     @Test

@@ -60,4 +60,11 @@ public class AddressStubs {
                 .mainAddress(true)
                 .build();
     }
+
+    public static AddressEntity createAddressWithNumber() {
+        return AddressEntity.builder()
+                .id(2L)
+                .cep("94020050")
+                .build();
+    }
 }
