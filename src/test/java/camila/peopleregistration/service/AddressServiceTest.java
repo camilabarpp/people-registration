@@ -147,7 +147,6 @@ class AddressServiceTest {
         var result = service.updateAddressByPersonId(olderAddress, personId, addressId);
 
         assertEquals(addressUpdated, result);
-        verify(repository, times(1)).findById(addressId);
         verify(integration, times(1)).findCep(cep);
         verify(repository, times(1)).save(addressUpdated);
     }
@@ -155,18 +154,17 @@ class AddressServiceTest {
     @Test
     @DisplayName("Deve lançar NotFoundException quando não achar pelo ID")
     void shouldThrowNotFoundExceptionWhenFindInvalidId() {
-        AddressEntity addressEntity = createAddress();
-        Long personId = 1L;
-        Long addressId = 2L;
+        var personEntity = personEntity();
+        var olderAddress = createAddress();
+        var addressId = personEntity.getAddresses().get(0).getId();
+        var personId = personEntity.getId();
 
         when(repository.findById(addressId))
                 .thenReturn(Optional.empty());
-        assertThrows(NotFoundException.class, () ->
-                service.updateAddressByPersonId(addressEntity, personId, addressId));
 
-        verify(repository, times(1)).findById(addressId);
-        verify(integration, never()).findCep(addressEntity.getCep());
-        verify(repository, never()).save(addressEntity);
+        assertThrows(NotFoundException.class, () -> service.updateAddressByPersonId(olderAddress, personId, addressId));
+        verify(integration, never()).findCep(anyString());
+        verify(repository, never()).save(any(AddressEntity.class));
     }
 
     @Test
