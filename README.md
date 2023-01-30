@@ -1,21 +1,38 @@
 # People Registration API (Desafio Attornatus)
 
-## 📖 1 - Durante a implementação de uma nova funcionalidade de software solicitada, quais critérios você avalia e implementa para garantia de qualidade de software?
-```bash
-
-```
-
-API de cadastro de pessoas e endereço em JAVA
+[Link do build do projeto](https://app.travis-ci.com/github/camilabarpp/people-registration)
 
 [![Build Status](https://app.travis-ci.com/camilabarpp/people-registration.svg?branch=master)](https://app.travis-ci.com/camilabarpp/people-registration)
 [![codecov](https://codecov.io/github/camilabarpp/people-registration/branch/master/graph/badge.svg?token=IMSTHUY2IM)](https://codecov.io/github/camilabarpp/people-registration)
+
+## Durante a implementação de uma nova funcionalidade de software solicitada, quais critérios você avalia e implementa para garantia de qualidade de software?
+```bash
+    Avaliação de critérios de qualidade de software incluem:
+        - Planejamento: definição dos requisitos de qualidade e definição de uma estratégia
+          de garantia de qualidade.
+        - Análise e design: identificação de problemas potenciais de qualidade e implementação
+          de soluções.
+        - Teste: verificação da qualidade do software por meio de testes unitários, 
+          de integração, 
+          de sistema e de aceitação.
+
+```
+
+## Em qual etapa da implementação você considera a qualidade de software?
+```bash
+    A qualidade de software é considerada em todas as etapas do ciclo de vida de desenvolvimento
+    de software, incluindo:
+        - Documentação: qualidade e clareza da documentação do software.
+        - Manutenibilidade: capacidade de modificar o software sem impactar outras partes.
+        - Testabilidade: facilidade de testar o software para identificar falhas.
+```
 
 # 🚀 Sobre o projeto
 É uma api de cadastro de pessoas, onde é possível criar, editar listar e deletar pessoas e endereços. Exemplo do response body abaixo:
 
 ```bash
 {
-    #request body
+    #response body
     "id": 1,
     "name": "Fernando Lima",
     "birthdate": "02/01/2000",
@@ -74,6 +91,8 @@ http://localhost:8080/v1/person/1/address/2
 - H2 Database
 - ViaCep API
 
+Aplicação em H2
+[H2 console](http://localhost:8080/h2-console/)
 
 ## Autor
 
