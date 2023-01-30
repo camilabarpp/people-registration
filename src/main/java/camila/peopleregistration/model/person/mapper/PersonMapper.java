@@ -12,7 +12,7 @@ import java.util.List;
 @UtilityClass
 public class PersonMapper {
 
-    public static PersonResponse fromEntity(PersonEntity personEntity) {
+    public static PersonResponse entityToRespopnse(PersonEntity personEntity) {
         return PersonResponse.builder()
                 .id(personEntity.getId())
                 .name(personEntity.getName())
@@ -21,17 +21,25 @@ public class PersonMapper {
                 .build();
     }
 
-    public static List<PersonResponse> fromEntityList(List<PersonEntity> personEntity) {
+    public static List<PersonResponse> responseFromEntityList(List<PersonEntity> personEntity) {
         return personEntity.stream()
-                .map(PersonMapper::fromEntity)
+                .map(PersonMapper::entityToRespopnse)
                 .toList();
     }
 
-    public static PersonEntity toEntity(PersonRequest personRequest) {
+    public static PersonEntity requestToEntity(PersonRequest personRequest) {
         return PersonEntity.builder()
                 .name(personRequest.getName())
                 .birthdate(personRequest.getBirthdate())
                 .addresses(personRequest.getAddresses())
+                .build();
+    }
+
+    public static PersonEntity responseToEntity(PersonResponse personResponse) {
+        return PersonEntity.builder()
+                .name(personResponse.getName())
+                .birthdate(personResponse.getBirthdate())
+                .addresses(personResponse.getAddresses())
                 .build();
     }
 

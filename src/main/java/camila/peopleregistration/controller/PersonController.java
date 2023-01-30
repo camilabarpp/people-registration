@@ -14,7 +14,6 @@ import java.util.List;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 
-//@Validated
 @RestController
 @RequestMapping("/v1/person/")
 @RequiredArgsConstructor

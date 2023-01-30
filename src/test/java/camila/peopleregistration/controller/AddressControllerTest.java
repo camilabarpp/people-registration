@@ -2,6 +2,7 @@ package camila.peopleregistration.controller;
 
 import camila.peopleregistration.configuration.exception.NotFoundException;
 import camila.peopleregistration.model.address.entity.AddressEntity;
+import camila.peopleregistration.model.person.response.PersonResponse;
 import camila.peopleregistration.repository.AddressRepository;
 import camila.peopleregistration.service.AddressService;
 import camila.peopleregistration.stubs.AddressStubs;
@@ -17,11 +18,15 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.Arrays;
 import java.util.List;
 
+import static java.util.Arrays.asList;
 import static org.hamcrest.Matchers.hasSize;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -62,16 +67,22 @@ class AddressControllerTest {
     @DisplayName("Deve retornar uma lista de endereços quando buscar por id de pessoa válido")
     void shouldGetAddressesByPersonId() throws Exception {
         Long personId = 1L;
-        List<AddressEntity> addresses = Arrays.asList(
+        List<AddressEntity> addresses = asList(
                 new AddressEntity(),
                 new AddressEntity()
         );
         when(service.getAddressesByPersonId(personId)).thenReturn(addresses);
 
+        ObjectMapper mapper = new ObjectMapper();
+
+        var expect = mapper.writeValueAsString(addresses);
+
         mvc.perform(get(url, personId))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(APPLICATION_JSON))
-                .andExpect(jsonPath("$", hasSize(2)));
+                .andExpect(jsonPath("$", hasSize(2)))
+                .andExpect(content().json(expect))
+                .andReturn();
 
         verify(service, times(1)).getAddressesByPersonId(personId);
     }
@@ -83,7 +94,7 @@ class AddressControllerTest {
 
         when(service.getAddressesByPersonId(personId)).thenThrow(new NotFoundException("Address not found"));
 
-        mvc.perform(get(url, personId))
+        mvc.perform(MockMvcRequestBuilders.get(url, personId))
                 .andExpect(status().isNotFound())
                 .andExpect(content().contentTypeCompatibleWith(APPLICATION_JSON))
                 .andExpect(jsonPath("$.timestamp").exists())
@@ -100,15 +111,18 @@ class AddressControllerTest {
         Long personId = 1L;
         AddressEntity address = new AddressEntity();
         address.setId(1L);
+
         when(service.createNewAddress(address, personId)).thenReturn(address);
 
         ObjectMapper mapper = new ObjectMapper();
 
-        String json = mapper.writeValueAsString(address);
+        var json = mapper.writeValueAsString(address);
+
         mvc.perform(post(url, personId)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
-                .andExpect(status().isCreated());
+                .andExpect(status().isCreated())
+                .andExpect(content().json(json));
 
         verify(service, times(1)).createNewAddress(address, personId);
     }
@@ -207,8 +221,6 @@ class AddressControllerTest {
         doThrow(new NotFoundException("Error to delete a address, please check your data!"))
                 .when(service)
                 .deleteAddressByPersonId(personId, addressId);
-
-        ObjectMapper mapper = new ObjectMapper();
 
         mvc.perform(delete(url + "/{addressId}", personId, addressId))
                 .andExpect(status().isNotFound())

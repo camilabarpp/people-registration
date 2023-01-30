@@ -42,7 +42,7 @@ public class AddressStubs {
                 .street("Rua Joao Dutra")
                 .neighborhood("Salgado Filho")
                 .number("10")
-                .city("Gravataí")
+                .city("Gravatai")
                 .uf("RS")
                 .mainAddress(true)
                 .build();
