@@ -8,6 +8,7 @@ import lombok.experimental.UtilityClass;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @UtilityClass
 public class PersonMapper {
@@ -24,7 +25,7 @@ public class PersonMapper {
     public static List<PersonResponse> responseFromEntityList(List<PersonEntity> personEntity) {
         return personEntity.stream()
                 .map(PersonMapper::entityToRespopnse)
-                .toList();
+                .collect(Collectors.toList());
     }
 
     public static PersonEntity requestToEntity(PersonRequest personRequest) {
