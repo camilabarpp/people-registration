@@ -62,14 +62,16 @@ public class AddressService {
     }
 
     public AddressEntity updateAddressByPersonId(AddressEntity addressEntity, Long personId, Long addressId) {
-        var address = repository.findById(addressId);
-        if (address.isPresent()) {
-            var newAddress = integration.findCep(addressEntity.getCep());
-            newAddress.setNumber(addressEntity.getNumber());
-            newAddress.setMainAddress(addressEntity.getMainAddress());
-            newAddress.setId(addressId);
-            addressEntity = newAddress;
-            return repository.save(addressEntity);
+        if (repository.findById(personId).isPresent()) {
+            return repository.findById(addressId)
+                    .map(addres -> {
+                        var newAddress = integration.findCep(addressEntity.getCep());
+                        newAddress.setNumber(addressEntity.getNumber());
+                        newAddress.setMainAddress(addressEntity.getMainAddress());
+                        newAddress.setId(addressEntity.getId());
+                        addres = newAddress;
+                        return repository.save(addres);
+                    }).orElseThrow(() -> new NotFoundException("Error to update a address, please check your data!"));
         } else {
             throw new NotFoundException("Error to update a address, please check your data!");
         }
