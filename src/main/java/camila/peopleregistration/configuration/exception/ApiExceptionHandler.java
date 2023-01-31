@@ -2,6 +2,7 @@ package camila.peopleregistration.configuration.exception;
 
 import camila.peopleregistration.configuration.exception.errorresponse.ErrorResponse;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -38,13 +39,14 @@ public class ApiExceptionHandler extends DefaultResponseErrorHandler {
                 .build();
     }
 
-    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-    @ResponseStatus (METHOD_NOT_ALLOWED)
-    public ErrorResponse methodArgumentNotValidException(HttpRequestMethodNotSupportedException exception) {
+    //TODO - Pegar a mensagem de erro default
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseStatus (BAD_REQUEST)
+    public ErrorResponse methodArgumentNotValidException(MethodArgumentNotValidException exception) {
         return ErrorResponse.builder()
                 .timestamp(LocalDateTime.now())
                 .message(exception.getMessage())
-                .field(METHOD_NOT_ALLOWED.name())
+                .field(BAD_REQUEST.name())
                 .parameter(exception.getClass().getSimpleName())
                 .build();
     }

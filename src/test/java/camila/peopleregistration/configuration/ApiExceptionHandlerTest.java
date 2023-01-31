@@ -77,8 +77,10 @@ class ApiExceptionHandlerTest {
     @DisplayName("Deve lançar HttpRequestMethodNotSupportedException")
     void shouldThowsHttpRequestMethodNotSupportedException() {
         ErrorResponse response = exceptionHandler
-                .methodArgumentNotValidException(new HttpRequestMethodNotSupportedException(
-                        errorObject.getParameter()));
+                .methodArgumentNotValidException(new MethodArgumentNotValidException(
+                        null,
+                        mock(BindingResult.class)
+                ));
         assertNotNull(response);
         assertEquals("HttpRequestMethodNotSupportedException", response.getParameter());
         assertEquals("METHOD_NOT_ALLOWED", response.getField());

@@ -17,6 +17,13 @@ public class AddressStubs {
                 .build();
     }
 
+    public static PersonRequest personRequestWithoutName() {
+        return PersonRequest.builder()
+                .birthdate("02/07/1996")
+                .addresses(List.of(createAddressWithNumber()))
+                .build();
+    }
+
     public static PersonEntity personEntity() {
         return PersonEntity.builder()
                 .id(1L)
@@ -67,4 +74,6 @@ public class AddressStubs {
                 .cep("94020050")
                 .build();
     }
+
+
 }
