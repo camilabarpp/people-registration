@@ -28,7 +28,7 @@ public class AddressController {
 
     @PostMapping("/{personId}/address")
     @ResponseStatus(CREATED)
-    public AddressEntity criarEndereco(@RequestBody AddressEntity endereco, @PathVariable Long personId) {
+    public AddressEntity createAddress(@RequestBody AddressEntity endereco, @PathVariable Long personId) {
         return service.createNewAddress(endereco, personId);
     }
 

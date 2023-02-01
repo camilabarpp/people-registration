@@ -15,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PersonRequest {
+    private Long id;
     @NotBlank(message = "Name can not be null or empty")
     @ApiModelProperty(notes = "Name of the person")
     private String name;

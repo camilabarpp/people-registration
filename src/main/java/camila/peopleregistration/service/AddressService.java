@@ -40,49 +40,54 @@ public class AddressService {
     }
 
     public List<AddressEntity> getAddressesByPersonId(Long id) {
-        Optional<PersonEntity> person = personRepository.findById(id);
-        return person.map(PersonEntity::getAddresses)
-                .orElseThrow(() -> new NotFoundException("Address not found"));
+        PersonEntity person = personRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Person with id " + id + " not found"));
+        return person.getAddresses();
     }
 
-    public AddressEntity createNewAddress(AddressEntity addressEntity, Long id) {
-        if (personRepository.findById(id).isPresent()) {
-            var newAddress = integration.findCep(addressEntity.getCep());
-            newAddress.setNumber(addressEntity.getNumber());
-            newAddress.setMainAddress(addressEntity.getMainAddress());
-            addressEntity = newAddress;
 
-            PersonEntity personEntity = personRepository.findById(id).get();
-            personEntity.getAddresses().add(0, addressEntity);
+    public AddressEntity createNewAddress(AddressEntity address, Long personId) {
+        PersonEntity person = personRepository.findById(personId)
+                .orElseThrow(() -> new NotFoundException("Person not found with id " + personId));
 
-            return repository.save(addressEntity);
-        } else {
-            throw new NotFoundException("Error to create a address, please check your data!");
-        }
+        AddressEntity newAddress = integration.findCep(address.getCep());
+        newAddress.setNumber(address.getNumber());
+        newAddress.setMainAddress(address.getMainAddress());
+        address = repository.save(newAddress);
+
+        person.getAddresses().add(0, address);
+        personRepository.save(person);
+
+        return address;
     }
+
 
     public AddressEntity updateAddressByPersonId(AddressEntity addressEntity, Long personId, Long addressId) {
-        if (repository.findById(personId).isPresent()) {
-            return repository.findById(addressId)
-                    .map(addres -> {
-                        var newAddress = integration.findCep(addressEntity.getCep());
-                        newAddress.setNumber(addressEntity.getNumber());
-                        newAddress.setMainAddress(addressEntity.getMainAddress());
-                        newAddress.setId(addressEntity.getId());
-                        addres = newAddress;
-                        return repository.save(addres);
-                    }).orElseThrow(() -> new NotFoundException("Error to update a address, please check your data!"));
+        Optional<PersonEntity> person = personRepository.findById(personId);
+        if (person.isEmpty()) {
+            throw new NotFoundException("Person not found");
+        }
+
+        Optional<AddressEntity> address = repository.findById(addressId);
+        if (address.isEmpty()) {
+            throw new NotFoundException("Address not found");
+        }
+
+        AddressEntity newAddress = integration.findCep(addressEntity.getCep());
+        newAddress.setNumber(addressEntity.getNumber());
+        newAddress.setMainAddress(addressEntity.getMainAddress());
+        newAddress.setId(addressId);
+
+        return repository.save(newAddress);
+    }
+
+    public void deleteAddressByPersonId(Long personId, Long addressId) {
+        Optional<AddressEntity> addressOptional = repository.findById(addressId);
+        if (addressOptional.isPresent()) {
+            repository.deleteById(addressId);
         } else {
-            throw new NotFoundException("Error to update a address, please check your data!");
+            throw new NotFoundException("Address with ID " + addressId + " not found for person with ID " + personId);
         }
     }
 
-    public void deleteAddressByPersonId(Long personId, Long addresId) {
-        var address = repository.findById(addresId);
-        if (address.isPresent()) {
-            repository.deleteById(addresId);
-        } else {
-            throw new NotFoundException("Error to delete a address, please check your data!");
-        }
-    }
 }
