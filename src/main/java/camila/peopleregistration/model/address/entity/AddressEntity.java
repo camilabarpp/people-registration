@@ -1,7 +1,5 @@
 package camila.peopleregistration.model.address.entity;
 
-import camila.peopleregistration.model.person.entity.PersonEntity;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -9,16 +7,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-
-import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -66,4 +62,5 @@ public class AddressEntity {
     @ApiModelProperty(notes = "Main address of the person")
     @Column(length = 5, nullable = false)
     private Boolean mainAddress;
+
 }

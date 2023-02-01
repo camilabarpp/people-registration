@@ -51,13 +51,11 @@ public class PersonController {
     @ResponseStatus(NO_CONTENT)
     @ApiOperation("Delete person by ID")
     public void deleteById(@PathVariable Long id) {
-        personService.deleteById(id);
-    }
+        personService.deleteById(id);}
 
     @DeleteMapping
     @ResponseStatus(NO_CONTENT)
     @ApiOperation("Delete all people")
     public void deleteAll() {
         personService.deleteAll();
-    }
-}
+    }}

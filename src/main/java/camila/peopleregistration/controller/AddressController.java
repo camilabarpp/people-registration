@@ -4,7 +4,6 @@ import camila.peopleregistration.model.address.entity.AddressEntity;
 import camila.peopleregistration.service.AddressService;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,7 +11,6 @@ import java.util.List;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 
-@Slf4j
 @RestController
 @RequestMapping("v1/person")
 @AllArgsConstructor
