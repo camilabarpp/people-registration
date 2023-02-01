@@ -14,6 +14,7 @@ import java.util.List;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/v1/person/")
 @RequiredArgsConstructor

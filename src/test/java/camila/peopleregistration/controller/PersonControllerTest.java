@@ -87,7 +87,7 @@ class PersonControllerTest {
 
         //When
         assertThat(json).contains("Camila");
-        assertThat(json).contains("02/07/1996");
+        assertThat(json).contains("94020070");
     }
 
     @Test
@@ -123,7 +123,7 @@ class PersonControllerTest {
 
         //When
         assertThat(json).contains("Camila");
-        assertThat(json).contains("02/07/1996");
+        assertThat(json).contains("94020-070");
     }
 
     @Test
@@ -194,8 +194,7 @@ class PersonControllerTest {
 
         //When
         assertThat(json).contains("Camila");
-        assertThat(json).contains("02/07/1996");
-
+        assertThat(json).contains("94020070");
     }
 
     @Test

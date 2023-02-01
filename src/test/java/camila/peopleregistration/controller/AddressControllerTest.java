@@ -155,9 +155,6 @@ class AddressControllerTest {
     @Test
     @DisplayName("Deve retornar erro 404 quando tentar atualizar com um id de pessoa inexistente")
     void updateAddressByPersonId_shouldReturnNotFound() throws Exception {
-        var id = personRepository.findAll();
-
-
         String request = mapper.writeValueAsString(createAddress());
 
         //When

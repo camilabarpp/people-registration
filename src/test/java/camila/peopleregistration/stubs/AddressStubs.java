@@ -5,6 +5,7 @@ import camila.peopleregistration.model.person.entity.PersonEntity;
 import camila.peopleregistration.model.person.request.PersonRequest;
 import camila.peopleregistration.model.person.response.PersonResponse;
 
+import java.util.Date;
 import java.util.List;
 
 public class AddressStubs {
@@ -20,14 +21,14 @@ public class AddressStubs {
     public static PersonRequest personRequest() {
         return PersonRequest.builder()
                 .name("Camila")
-                .birthdate("02/07/1996")
+                .birthdate(new Date())
                 .addresses(List.of(createAddress()))
                 .build();
     }
 
     public static PersonRequest personRequestWithoutName() {
         return PersonRequest.builder()
-                .birthdate("02/07/1996")
+                .birthdate(new Date())
                 .addresses(List.of(createAddressWithoutNumber()))
                 .build();
     }
@@ -35,7 +36,7 @@ public class AddressStubs {
     public static PersonRequest personRequestWithInvalidName() {
         return PersonRequest.builder()
                 .name(invalidName)
-                .birthdate("02/07/1996")
+                .birthdate(new Date())
                 .addresses(List.of(createAddressWithoutNumber()))
                 .build();
     }
@@ -43,7 +44,7 @@ public class AddressStubs {
     public static PersonRequest personRequestWithInvalidCep() {
         return PersonRequest.builder()
                 .name(invalidName)
-                .birthdate("02/07/1996")
+                .birthdate(new Date())
                 .addresses(List.of(AddressEntity
                         .builder()
                         .cep("9402007")
@@ -54,7 +55,7 @@ public class AddressStubs {
     public static PersonEntity personEntity() {
         return PersonEntity.builder()
                 .name("Camila")
-                .birthdate("02/07/1996")
+                .birthdate(new Date())
                 .addresses(List.of(createAddress()))
                 .build();
     }
@@ -62,7 +63,7 @@ public class AddressStubs {
     public static PersonResponse personResponse() {
         return PersonResponse.builder()
                 .name("Camila")
-                .birthdate("02/07/1996")
+                .birthdate(new Date())
                 .addresses(List.of(createAddress()))
                 .build();
     }
@@ -79,32 +80,10 @@ public class AddressStubs {
                 .build();
     }
 
-    public static AddressEntity createAddress2() {
-        return AddressEntity.builder()
-                .id(10L)
-                .cep("94020050")
-                .street("Rua Alfredo Soares Pitres")
-                .neighborhood("Salgado Filho")
-                .number("10")
-                .city("Gravataí")
-                .uf("RS")
-                .mainAddress(true)
-                .build();
-    }
-
     public static AddressEntity createAddressWithoutNumber() {
         return AddressEntity.builder()
                 .id(2L)
                 .cep("94020050")
                 .build();
     }
-
-    public static AddressEntity createAddressWithoutValidCep() {
-        return AddressEntity.builder()
-                .id(2L)
-                .cep("94020051")
-                .build();
-    }
-
-
 }
