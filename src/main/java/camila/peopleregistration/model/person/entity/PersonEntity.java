@@ -1,6 +1,7 @@
 package camila.peopleregistration.model.person.entity;
 
 import camila.peopleregistration.model.address.entity.AddressEntity;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,6 +13,8 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
+import java.util.Date;
 import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -34,7 +37,7 @@ public class PersonEntity {
     private String name;
 
     @Column(length = 10, nullable = false)
-    private String birthdate;
+    private Date birthdate;
 
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
