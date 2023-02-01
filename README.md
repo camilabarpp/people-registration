@@ -33,7 +33,23 @@ de software, incluindo:
 ```
 
 # 🚀 Sobre o projeto
-É uma api de cadastro de pessoas, onde é possível criar, editar listar e deletar pessoas e endereços. Exemplo do response body abaixo:
+É uma api de cadastro de pessoas, onde é possível criar, editar listar e deletar pessoas e endereços. Exemplo do request body abaixo:
+
+```bash
+{
+    #request body
+    "name": "Fernando Lima",
+    "birthdate": "02/01/2000",
+    "addresses": [
+        {
+            "cep": "93010-003",
+            "number": "670",
+            "mainAddress": true,
+        }
+    ]
+}
+```
+Retornará um response body já com as propriedades do endereço apartir do CEP, se válido irá retornar logradouro, bairro, cidade e UF da pessoa. Exemplo abaixo:
 
 ```bash
 {
@@ -55,7 +71,7 @@ de software, incluindo:
     ]
 }
 ```
-Para o cadastro do endreço é possível passar na requisição somente o número do imóvel, cep e se é o endereço príncipal ou não, no restantes dos dasdos será feitas uma requisição na api de ViaCep e preencerá automáticamente. Exemplo do request body para cadatrar endereço:
+Para o cadastro do endereço é possível passar na requisição somente o número do imóvel, cep e se é o endereço príncipal ou não, no restantes dos dasdos será feitas uma requisição na api de ViaCep e preencerá automáticamente. Exemplo do request body para cadatrar endereço:
 
 ```bash
 {
@@ -67,7 +83,7 @@ Para o cadastro do endreço é possível passar na requisição somente o númer
 ```
 # ****ENDPOINTS****
 
-[Pode consultar a documentação Swagger para melher entendimento, clique aqui!](http://localhost:8080/swagger-ui/index.html#/)
+[Pode consultar a documentação Swagger para melhor entendimento, clique aqui!](http://localhost:8080/swagger-ui/index.html#/)
 
 
 List all people (GET), Delete all people (DELETE), Create a person (POST)
@@ -100,7 +116,7 @@ http://localhost:8080/v1/person/1/address/2
 - ViaCep API
 
 Aplicação em H2
-[H2 console](http://localhost:8080/h2-console/)
+[H2 Database](http://localhost:8080/h2-console/)
 
 ## Autor
 
