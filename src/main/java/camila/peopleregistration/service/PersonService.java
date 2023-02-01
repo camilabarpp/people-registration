@@ -56,9 +56,11 @@ public class PersonService {
         AddressEntity addressInfo = addressService.searchCep(personRequest);
         address.setCep(addressInfo.getCep());
         address.setStreet(addressInfo.getStreet());
+        address.setNumber(addressInfo.getNumber());
         address.setNeighborhood(addressInfo.getNeighborhood());
         address.setCity(addressInfo.getCity());
         address.setUf(addressInfo.getUf());
+        address.setMainAddress(addressInfo.getMainAddress());
         return address;
     }
 
