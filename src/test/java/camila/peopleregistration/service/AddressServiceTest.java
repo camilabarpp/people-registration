@@ -152,8 +152,8 @@ class AddressServiceTest {
 
 
     @Test
-    @DisplayName("Deve lançar NotFoundException quando não achar pelo ID")
-    void shouldThrowNotFoundExceptionWhenFindInvalidId() {
+    @DisplayName("Deve lançar NotFoundException quando não achar uma pessoa pelo ID")
+    void shouldThrowNotFoundExceptionWhenFindInvalidPersonId() {
         var personEntity = personEntity();
         var olderAddress = createAddress();
         var addressId = personEntity.getAddresses().get(0).getId();
@@ -161,6 +161,26 @@ class AddressServiceTest {
 
         when(repository.findById(addressId))
                 .thenReturn(Optional.empty());
+
+        assertThrows(NotFoundException.class, () -> service.updateAddressByPersonId(olderAddress, personId, addressId));
+        verify(integration, never()).findCep(anyString());
+        verify(repository, never()).save(any(AddressEntity.class));
+    }
+
+    @Test
+    @DisplayName("Deve lançar NotFoundException quando não achar um endereço pelo ID")
+    void shouldThrowNotFoundExceptionWhenFindInvalidAddresId() {
+        var personEntity = personEntity();
+        var olderAddress = createAddress();
+        var addressId = personEntity.getAddresses().get(0).getId();
+        var personId = personEntity.getId();
+
+        when(personRepository.findById(personId))
+                .thenReturn(Optional.of(personEntity));
+
+        when(repository.findById(addressId))
+                .thenReturn(Optional.empty());
+
 
         assertThrows(NotFoundException.class, () -> service.updateAddressByPersonId(olderAddress, personId, addressId));
         verify(integration, never()).findCep(anyString());
