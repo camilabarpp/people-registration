@@ -1,233 +1,209 @@
 package camila.peopleregistration.controller;
 
-import camila.peopleregistration.configuration.exception.NotFoundException;
-import camila.peopleregistration.model.address.entity.AddressEntity;
-import camila.peopleregistration.model.person.response.PersonResponse;
 import camila.peopleregistration.repository.AddressRepository;
+import camila.peopleregistration.repository.PersonRepository;
 import camila.peopleregistration.service.AddressService;
-import camila.peopleregistration.stubs.AddressStubs;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import java.util.Arrays;
-import java.util.List;
-
-import static java.util.Arrays.asList;
-import static org.hamcrest.Matchers.hasSize;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
+import static camila.peopleregistration.stubs.AddressStubs.*;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@ExtendWith(SpringExtension.class)
-@WebMvcTest(AddressController.class)
+@SpringBootTest
+@AutoConfigureMockMvc
 class AddressControllerTest {
 
     @Autowired
     private MockMvc mvc;
 
-    @MockBean
+    @Autowired
     private AddressService service;
 
-    @MockBean
-    private final AddressRepository repository;
+    @Autowired
+    private PersonRepository personRepository;
 
+    @Autowired
+    private AddressRepository addressRepository;
 
-    private String url = "http://localhost:8080/v1/person/{personId}/address/";
+    @Autowired
+    ObjectMapper mapper = new ObjectMapper();
 
     @BeforeEach
     void setUp() {
-        this.url = "http://localhost:8080/v1/person/1/address";
+        personRepository.save(personEntity());
+        addressRepository.save(createAddress());
     }
 
     @AfterEach
     void tearDown() {
-        repository.deleteAll();
-    }
-
-    @Autowired
-    AddressControllerTest(AddressRepository repository) {
-        this.repository = repository;
+        personRepository.deleteAll();
+        addressRepository.deleteAll();
     }
 
     @Test
-    @DisplayName("Deve retornar uma lista de endereços quando buscar por id de pessoa válido")
-    void shouldGetAddressesByPersonId() throws Exception {
-        Long personId = 1L;
-        List<AddressEntity> addresses = asList(
-                new AddressEntity(),
-                new AddressEntity()
-        );
-        when(service.getAddressesByPersonId(personId)).thenReturn(addresses);
+    @DisplayName("Deve retornar erro 404 quando buscar por id de pessoa inexistente")
+    void shouldReturnNotFound() throws Exception {
+        MvcResult result = mvc.perform(get("/v1/person/2/address/")
+                .param("addressId", "1")
+                .contentType(APPLICATION_JSON))
+            .andDo(print())
+            .andExpect(status().isNotFound())
+            .andReturn();
 
-        ObjectMapper mapper = new ObjectMapper();
+        String json = result.getResponse().getContentAsString();
 
-        var expect = mapper.writeValueAsString(addresses);
+        assertThat(json).contains("Person with id 2 not found");
+    }
 
-        mvc.perform(get(url, personId))
-                .andExpect(status().isOk())
-                .andExpect(content().contentTypeCompatibleWith(APPLICATION_JSON))
-                .andExpect(jsonPath("$", hasSize(2)))
-                .andExpect(content().json(expect))
+    @Test
+    @DisplayName("Deve criar um novo endereço quando passar um id de pessoa existente")
+    void createNewAddress_shouldReturnCreated() throws Exception {
+        var person = personRepository.findAll();
+        var personId = person.get(0).getId();
+
+        MvcResult result = mvc.perform(post("/v1/person/{personId}/address/", personId)
+                        .contentType(APPLICATION_JSON)
+                        .content(mapper.writeValueAsString(createAddress())))
+                .andDo(print())
+                .andExpect(status().isCreated())
                 .andReturn();
 
-        verify(service, times(1)).getAddressesByPersonId(personId);
+        String json = result.getResponse().getContentAsString();
+
+        assertThat(json).contains("94020-070");
+        assertThat(json).contains("Salgado Filho");
+        assertThat(json).contains("RS");
     }
 
     @Test
-    @DisplayName("Deve retornar erro 404 quando buscar por id de pessoa inválido")
-    void shouldReturnNotFound() throws Exception {
-        Long personId = 1L;
+    @DisplayName("Deve retornar uma lista de endereços quando buscar por id de pessoa existente")
+    void shouldGetAddressesByPersonId() throws Exception {
+        var person = personRepository.findAll();
+        var id = person.get(0).getId();
 
-        when(service.getAddressesByPersonId(personId)).thenThrow(new NotFoundException("Address not found"));
+        //When
+        MvcResult result = mvc.perform(get("/v1/person/{id}/address/", id)
+                        .contentType(APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andReturn();
 
-        mvc.perform(MockMvcRequestBuilders.get(url, personId))
-                .andExpect(status().isNotFound())
-                .andExpect(content().contentTypeCompatibleWith(APPLICATION_JSON))
-                .andExpect(jsonPath("$.timestamp").exists())
-                .andExpect(jsonPath("$.message").value("Address not found"))
-                .andExpect(jsonPath("$.field").value("NOT_FOUND"))
-                .andExpect(jsonPath("$.parameter").value("NotFoundException"));
+        String json = result.getResponse().getContentAsString();
 
-        verify(service, times(1)).getAddressesByPersonId(personId);
+        assertThat(json).contains("94020070");
+        assertThat(json).contains("Salgado Filho");
+        assertThat(json).contains("RS");
     }
 
     @Test
-    @DisplayName("Deve criar um novo endereço quando passar um id de pessoa válido")
-    void createNewAddress_shouldReturnCreated() throws Exception {
-        Long personId = 1L;
-        AddressEntity address = new AddressEntity();
-        address.setId(1L);
+    @DisplayName("Deve retornar erro ConstraintViolationException quando passar um cep inválido no cadastro")
+    void createNewAddressWithoutNumber_shouldReturnBadRequest() throws Exception {
+        var person = personRepository.findAll();
+        var personId = person.get(0).getId();
+        var addressId = person.get(0).getAddresses().get(0).getId();
 
-        when(service.createNewAddress(address, personId)).thenReturn(address);
+        MvcResult result = mvc.perform(post("/v1/person/{personId}/address/", personId)
+                        .param("addressId", addressId.toString())
+                        .contentType(APPLICATION_JSON)
+                        .content(mapper.writeValueAsString(createAddressWithoutNumber())))
+                .andDo(print())
+                .andExpect(status().isBadRequest())
+                .andReturn();
 
-        ObjectMapper mapper = new ObjectMapper();
+        String json = result.getResponse().getContentAsString();
 
-        var json = mapper.writeValueAsString(address);
-
-        mvc.perform(post(url, personId)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(json))
-                .andExpect(status().isCreated())
-                .andExpect(content().json(json));
-
-        verify(service, times(1)).createNewAddress(address, personId);
+        assertThat(json).contains("Missing required fields or invalid data");
     }
 
-    @Test
-    @DisplayName("Deve retornar erro 404 quando passar um id de pessoa inválido")
-    void createNewAddress_shouldReturnNotFound() throws Exception {
-        Long personId = 1L;
-        AddressEntity address = new AddressEntity();
-        address.setId(1L);
-        when(service.createNewAddress(address, personId)).thenThrow(new NotFoundException("Error to create a address, please check your data!"));
-
-        ObjectMapper mapper = new ObjectMapper();
-
-        String json = mapper.writeValueAsString(address);
-        mvc.perform(post(url, personId)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(json))
-                .andExpect(status().isNotFound())
-                .andExpect(content().contentTypeCompatibleWith(APPLICATION_JSON))
-                .andExpect(jsonPath("$.timestamp").exists())
-                .andExpect(jsonPath("$.message").value("Error to create a address, please check your data!"))
-                .andExpect(jsonPath("$.field").value("NOT_FOUND"))
-                .andExpect(jsonPath("$.parameter").value("NotFoundException"));
-
-        verify(service, times(1)).createNewAddress(address, personId);
-    }
 
     @Test
-    @DisplayName("Deve atualizar um endereço quando passar um id de pessoa válido")
+    @DisplayName("Deve atualizar um endereço quando passar um id de pessoa existente")
     void updateAddressByPersonId_shouldReturnCreated() throws Exception {
-        var addressExpect = AddressStubs.createAddress();
-        var addressResponse = AddressStubs.createAddress();
-        Long personId = 1L;
-        Long addressId = 1L;
+        var person = personRepository.findAll();
+        var personId = person.get(0).getId();
+        var addressId = person.get(0).getAddresses().get(0).getId();
+        //When
+        MvcResult result = mvc.perform(MockMvcRequestBuilders.put("/v1/person/{personId}/address/{addressId}", personId, addressId)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(mapper.writeValueAsString(createAddress())))
+                .andDo(print())
+                .andExpect(status().isCreated())
+                .andReturn();
 
-        when(service.updateAddressByPersonId(addressExpect, personId, addressId)).thenReturn(addressResponse);
+        String json = result.getResponse().getContentAsString();
 
-        ObjectMapper mapper = new ObjectMapper();
-
-        String json = mapper.writeValueAsString(addressResponse);
-        mvc.perform(put(url + "/{addressId}", personId, addressId)
-                .contentType(APPLICATION_JSON)
-                .content(json)
-        ).andExpect(status().isCreated());
-
-        verify(service, times(1)).updateAddressByPersonId(addressExpect, personId, addressId);
+        //When
+        assertThat(json).contains("94020-070");
+        assertThat(json).contains("Salgado Filho");
+        assertThat(json).contains("RS");
     }
 
     @Test
-    @DisplayName("Deve retornar erro 404 quando tentar atualizar com um id de pessoa inválido")
+    @DisplayName("Deve retornar erro 404 quando tentar atualizar com um id de pessoa inexistente")
     void updateAddressByPersonId_shouldReturnNotFound() throws Exception {
-        var addressExpect = AddressStubs.createAddress();
-        var addressResponse = AddressStubs.createAddress();
-        Long personId = 1L;
-        Long addressId = 1L;
+        var id = personRepository.findAll();
 
-        when(service.updateAddressByPersonId(addressExpect, personId, addressId))
-                .thenThrow(new NotFoundException("Error to update a address, please check your data!"));
 
-        ObjectMapper mapper = new ObjectMapper();
+        String request = mapper.writeValueAsString(createAddress());
 
-        String json = mapper.writeValueAsString(addressExpect);
-        mvc.perform(put(url + "/{addressId}", personId, addressId)
-                .contentType(APPLICATION_JSON)
-                .content(json))
+        //When
+        MvcResult result = mvc.perform(MockMvcRequestBuilders.put("/v1/person/2/address/1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(request))
+                .andDo(print())
                 .andExpect(status().isNotFound())
-                .andExpect(content().contentTypeCompatibleWith(APPLICATION_JSON))
-                .andExpect(jsonPath("$.timestamp").exists())
-                .andExpect(jsonPath("$.message").value("Error to update a address, please check your data!"))
-                .andExpect(jsonPath("$.field").value("NOT_FOUND"))
-                .andExpect(jsonPath("$.parameter").value("NotFoundException"));;
+                .andReturn();
+
+        String json = result.getResponse().getContentAsString();
+
+        assertThat(json).contains("Person not found");
     }
 
     @Test
-    @DisplayName("Deve deletar um endereço quando passar um id de pessoa válido")
+    @DisplayName("Deve deletar um endereço quando passar um id de pessoa existente")
     void deleteAddressByPersonId_shouldReturnCreated() throws Exception {
-        Long personId = 1L;
-        Long addressId = 1L;
+        var person = personRepository.findAll();
+        var personId = person.get(0).getId();
+        var addressId = person.get(0).getAddresses().get(0).getId();
 
-        doNothing().when(service).deleteAddressByPersonId(personId, addressId);
+        //When
+        MvcResult result = mvc.perform(delete("/v1/person/{personId}/address/{addressId}", personId, addressId)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isNoContent())
+                .andReturn();
 
-        mvc.perform(delete(url + "/{addressId}", personId, addressId)
-                .contentType(APPLICATION_JSON)
-        ).andExpect(status().isNoContent());
+        String json = result.getResponse().getContentAsString();
 
-        verify(service, times(1)).deleteAddressByPersonId(personId, addressId);
+        assertThat(json).isEmpty();
     }
 
     @Test
-    @DisplayName("Deve retornar erro 404 quando tentar deletar com um id de pessoa inválido")
+    @DisplayName("Deve retornar erro 404 quando tentar deletar com um id de pessoa inexistente")
     void deleteAddressByPersonId_shouldReturnNotFound() throws Exception {
-        Long personId = 1L;
-        Long addressId = 1L;
-
-        doThrow(new NotFoundException("Error to delete a address, please check your data!"))
-                .when(service)
-                .deleteAddressByPersonId(personId, addressId);
-
-        mvc.perform(delete(url + "/{addressId}", personId, addressId))
+        //When
+        MvcResult result = mvc.perform(delete("/v1/person/7/address/12")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
                 .andExpect(status().isNotFound())
-                .andExpect(content().contentTypeCompatibleWith(APPLICATION_JSON))
-                .andExpect(jsonPath("$.timestamp").exists())
-                .andExpect(jsonPath("$.message").value("Error to delete a address, please check your data!"))
-                .andExpect(jsonPath("$.field").value("NOT_FOUND"))
-                .andExpect(jsonPath("$.parameter").value("NotFoundException"));
+                .andReturn();
+
+        String json = result.getResponse().getContentAsString();
+
+        assertThat(json).contains("Address with ID 12 not found for person with ID 7");
     }
 }

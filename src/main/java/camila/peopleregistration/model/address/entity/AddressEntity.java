@@ -15,6 +15,8 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import java.util.List;
 
@@ -60,7 +62,8 @@ public class AddressEntity {
     @Column(length = 2, nullable = false)
     private String uf;
 
+    @NotNull
     @ApiModelProperty(notes = "Main address of the person")
-    @Column(nullable = false)
+    @Column(length = 5, nullable = false)
     private Boolean mainAddress;
 }

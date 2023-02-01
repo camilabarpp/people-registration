@@ -154,7 +154,7 @@ class PersonServiceTest {
     @DisplayName("Deve lançar ConstraintViolationException quanto estiver faltando dados para salvar uma pessoa")
     void save_ShouldThrowConstraintViolationException() {
         var request = PersonRequest.builder()
-                .addresses(List.of(createAddressWithNumber()))
+                .addresses(List.of(createAddressWithoutNumber()))
                 .build();
 
         when(repository.save(requestToEntity(request))).thenThrow(ConstraintViolationException.class);

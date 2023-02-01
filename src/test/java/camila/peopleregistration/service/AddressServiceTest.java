@@ -4,7 +4,9 @@ import camila.peopleregistration.configuration.exception.NotFoundException;
 import camila.peopleregistration.integration.IntegrationCep;
 import camila.peopleregistration.model.address.entity.AddressEntity;
 import camila.peopleregistration.model.person.entity.PersonEntity;
+import camila.peopleregistration.model.person.mapper.PersonMapper;
 import camila.peopleregistration.model.person.request.PersonRequest;
+import camila.peopleregistration.model.person.response.PersonResponse;
 import camila.peopleregistration.repository.AddressRepository;
 import camila.peopleregistration.repository.PersonRepository;
 import camila.peopleregistration.stubs.AddressStubs;
@@ -13,7 +15,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.ArrayList;
@@ -128,28 +129,27 @@ class AddressServiceTest {
     }
 
     @Test
-    @DisplayName("Deve atualizar um endereço apartir de um ID válido")
-    void shouldUpdateAddressByPersonId() {
-        var personEntity = personEntity();
-        var olderAddress = createAddress();
-        var addressUpdated = createAddress2();
-        var cep = personEntity.getAddresses().get(0).getCep();
-        var addressId = personEntity.getAddresses().get(0).getId();
-        var personId = personEntity.getId();
+    void shouldfUpdateAddressByPersonId_Success() {
+        AddressEntity addressEntity = createAddress();
+        addressEntity.setId(2L);
 
-        when(repository.findById(addressId))
-                .thenReturn(Optional.of(olderAddress));
-        when(integration.findCep(cep))
-                .thenReturn(addressUpdated);
-        when(repository.save(addressUpdated))
-                .thenReturn(addressUpdated);
+        PersonEntity person = personEntity();
+        person.setId(1L);
 
-        var result = service.updateAddressByPersonId(olderAddress, personId, addressId);
+        AddressEntity address = createAddress();
+        address.setId(2L);
 
-        assertEquals(addressUpdated, result);
-        verify(integration, times(1)).findCep(cep);
-        verify(repository, times(1)).save(addressUpdated);
+        when(personRepository.findById(1L)).thenReturn(Optional.of(person));
+        when(repository.findById(2L)).thenReturn(Optional.of(address));
+        when(integration.findCep("94020070")).thenReturn(addressEntity);
+        when(repository.save(address)).thenReturn(address);
+
+        AddressEntity result = service.updateAddressByPersonId(addressEntity, 1L, 2L);
+        assertNotNull(result);
+        assertEquals(2L, result.getId().longValue());
+        verify(repository, times(1)).save(addressEntity);
     }
+
 
     @Test
     @DisplayName("Deve lançar NotFoundException quando não achar pelo ID")

@@ -1,4 +1,4 @@
-package camila.peopleregistration.configuration;
+package camila.peopleregistration.exceptions;
 
 import camila.peopleregistration.configuration.exception.ApiExceptionHandler;
 import camila.peopleregistration.configuration.exception.NotFoundException;
@@ -14,23 +14,12 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.server.ResponseStatusException;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.ConstraintViolationException;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.openMocks;
 
 @ExtendWith(SpringExtension.class)
@@ -71,19 +60,6 @@ class ApiExceptionHandlerTest {
         assertNotNull(response);
         assertEquals("NullPointerException", response.getParameter());
         assertEquals("INTERNAL_SERVER_ERROR", response.getField());
-    }
-
-    @Test
-    @DisplayName("Deve lançar HttpRequestMethodNotSupportedException")
-    void shouldThowsHttpRequestMethodNotSupportedException() {
-        ErrorResponse response = exceptionHandler
-                .methodArgumentNotValidException(new MethodArgumentNotValidException(
-                        null,
-                        mock(BindingResult.class)
-                ));
-        assertNotNull(response);
-        assertEquals("HttpRequestMethodNotSupportedException", response.getParameter());
-        assertEquals("METHOD_NOT_ALLOWED", response.getField());
     }
 
     @Test

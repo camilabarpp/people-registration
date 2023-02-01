@@ -1,7 +1,7 @@
 package camila.peopleregistration.configuration.exception;
 
 import camila.peopleregistration.configuration.exception.errorresponse.ErrorResponse;
-import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -10,7 +10,9 @@ import org.springframework.web.client.DefaultResponseErrorHandler;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.ConstraintViolationException;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 import static org.springframework.http.HttpStatus.*;
 @RestControllerAdvice
@@ -39,15 +41,37 @@ public class ApiExceptionHandler extends DefaultResponseErrorHandler {
                 .build();
     }
 
-    //TODO - Pegar a mensagem de erro default
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus (BAD_REQUEST)
     public ErrorResponse methodArgumentNotValidException(MethodArgumentNotValidException exception) {
         return ErrorResponse.builder()
                 .timestamp(LocalDateTime.now())
-                .message(exception.getMessage())
+                .message(Objects.requireNonNull(exception.getBindingResult().getFieldError()).getDefaultMessage())
                 .field(BAD_REQUEST.name())
                 .parameter(exception.getClass().getSimpleName())
+                .build();
+    }
+
+    //TODO - Fazer um teste para esse erro
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    @ResponseStatus (BAD_REQUEST)
+    public ErrorResponse dataIntegrityViolationException(DataIntegrityViolationException e) {
+        return ErrorResponse.builder()
+                .timestamp(LocalDateTime.now())
+                .message("Impossible insert do database, object with invalid size")
+                .field(BAD_REQUEST.name())
+                .parameter(e.getClass().getSimpleName())
+                .build();
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    @ResponseStatus (BAD_REQUEST)
+    public ErrorResponse constraintViolationException(ConstraintViolationException e) {
+        return ErrorResponse.builder()
+                .timestamp(LocalDateTime.now())
+                .message("Missing required fields or invalid data")
+                .field(BAD_REQUEST.name())
+                .parameter(e.getClass().getSimpleName())
                 .build();
     }
 
