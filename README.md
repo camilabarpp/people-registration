@@ -4,7 +4,7 @@
 
 [![Build Status](https://app.travis-ci.com/camilabarpp/people-registration.svg?branch=master)](https://app.travis-ci.com/camilabarpp/people-registration)
 [![codecov](https://codecov.io/github/camilabarpp/people-registration/branch/master/graph/badge.svg?token=IMSTHUY2IM)](https://codecov.io/github/camilabarpp/people-registration)
-[![Documentation](https://img.shields.io/badge/Documentation-yes-darkgreen.svg)](http://localhost:8080/swagger-ui/index.html#/)
+[![Documentation](https://img.shields.io/badge/Documentation-yes-pink.svg)](http://localhost:8080/swagger-ui/index.html#/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.5.6-blue.svg)](https://spring.io/projects/spring-boot)
 [![JUnit](https://img.shields.io/badge/JUnit-5.9.0-green.svg)](https://junit.org/junit5/)
 [![Gradle](https://img.shields.io/badge/Gradle-7.6-red.svg)](https://gradle.org/)
@@ -12,24 +12,24 @@
 
 ## Durante a implementação de uma nova funcionalidade de software solicitada, quais critérios você avalia e implementa para garantia de qualidade de software?
 ```bash
-    Avaliação de critérios de qualidade de software incluem:
-        - Planejamento: definição dos requisitos de qualidade e definição de uma estratégia
-          de garantia de qualidade.
-        - Análise e design: identificação de problemas potenciais de qualidade e implementação
-          de soluções.
-        - Teste: verificação da qualidade do software por meio de testes unitários, 
-          de integração, 
-          de sistema e de aceitação.
+Avaliação de critérios de qualidade de software incluem:
+    - Planejamento: definição dos requisitos de qualidade e definição de uma estratégia
+      de garantia de qualidade.
+    - Análise e design: identificação de problemas potenciais de qualidade e implementação
+      de soluções.
+    - Teste: verificação da qualidade do software por meio de testes unitários, 
+      de integração, 
+      de sistema e de aceitação.
 
 ```
 
 ## Em qual etapa da implementação você considera a qualidade de software?
 ```bash
-    A qualidade de software é considerada em todas as etapas do ciclo de vida de desenvolvimento
-    de software, incluindo:
-        - Documentação: qualidade e clareza da documentação do software.
-        - Manutenibilidade: capacidade de modificar o software sem impactar outras partes.
-        - Testabilidade: facilidade de testar o software para identificar falhas.
+A qualidade de software é considerada em todas as etapas do ciclo de vida de desenvolvimento
+de software, incluindo:
+    - Documentação: qualidade e clareza da documentação do software.
+    - Manutenibilidade: capacidade de modificar o software sem impactar outras partes.
+    - Testabilidade: facilidade de testar o software para identificar falhas.
 ```
 
 # 🚀 Sobre o projeto
@@ -91,6 +91,9 @@ http://localhost:8080/v1/person/1/address/2
 - Java 17
 - Spring Boot
 - Junit e Mockito
+- Jacoco
+- Codecov
+- Travis
 - Swagger
 - Gradle
 - H2 Database
@@ -107,5 +110,13 @@ Camila Ramão Barpp
 [![Instagram Badge](https://img.shields.io/badge/-instagram-red?style=for-the-badge&logo=instagram&logoColor=white&link=https://github.com/camilabarpp)](https://www.instagram.com/camilabarpp/)
 [![Linkedin Badge](https://img.shields.io/badge/-Linkedin-blue?style=for-the-badge&logo=Linkedin&logoColor=white&link=https://github.com/camilabarpp)](https://www.linkedin.com/in/camilabarpp/)
 [![Spotify Badge](https://img.shields.io/badge/-Spotify-3bb34b?style=for-the-badge&logo=Spotify&logoColor=161f16&link=https://github.com/camilabarpp)](https://open.spotify.com/user/21o2si6ombl5lygoggs5m6bsy)
+
+
+
+
+Outros repositórios
+
+[![DoctorCare](https://img.shields.io/badge/DoctorCare-darkgreen.svg)](https://camilabarpp.github.io/DoctorCare/)
+[![Pokedex](https://img.shields.io/badge/Pokedex-darkblue.svg)](https://camilabarpp.github.io/Pokedex/)
 
 
