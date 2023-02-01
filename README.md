@@ -4,6 +4,11 @@
 
 [![Build Status](https://app.travis-ci.com/camilabarpp/people-registration.svg?branch=master)](https://app.travis-ci.com/camilabarpp/people-registration)
 [![codecov](https://codecov.io/github/camilabarpp/people-registration/branch/master/graph/badge.svg?token=IMSTHUY2IM)](https://codecov.io/github/camilabarpp/people-registration)
+[![Documentation](https://img.shields.io/badge/Documentation-yes-darkgreen.svg)](http://localhost:8080/swagger-ui/index.html#/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.5.6-blue.svg)](https://spring.io/projects/spring-boot)
+[![JUnit](https://img.shields.io/badge/JUnit-5.9.0-green.svg)](https://junit.org/junit5/)
+[![Gradle](https://img.shields.io/badge/Gradle-7.6-red.svg)](https://gradle.org/)
+
 
 ## Durante a implementação de uma nova funcionalidade de software solicitada, quais critérios você avalia e implementa para garantia de qualidade de software?
 ```bash
