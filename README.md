@@ -32,6 +32,19 @@ de software, incluindo:
     - Testabilidade: facilidade de testar o software para identificar falhas.
 ```
 
+# Para executar o projeto
+
+Git clone no repositório people-registration
+```bash 
+https://github.com/camilabarpp/people-registration
+```
+
+Após aberto o projeto na sua ide, rode este comando no terminal:
+```bash
+gradle build
+```
+
+
 # 🚀 Sobre o projeto
 É uma api de cadastro de pessoas, onde é possível criar, editar listar e deletar pessoas e endereços. Exemplo do request body abaixo:
 
