@@ -1,4 +1,4 @@
-# People Registration API (Desafio Attornatus)
+# People Registration API
 
 [Link do build do projeto](https://app.travis-ci.com/github/camilabarpp/people-registration)
 
@@ -8,29 +8,6 @@
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.5.6-blue.svg)](https://spring.io/projects/spring-boot)
 [![JUnit](https://img.shields.io/badge/JUnit-5.9.0-green.svg)](https://junit.org/junit5/)
 [![Gradle](https://img.shields.io/badge/Gradle-7.6-red.svg)](https://gradle.org/)
-
-
-## Durante a implementação de uma nova funcionalidade de software solicitada, quais critérios você avalia e implementa para garantia de qualidade de software?
-```bash
-Avaliação de critérios de qualidade de software incluem:
-    - Planejamento: definição dos requisitos de qualidade e definição de uma estratégia
-      de garantia de qualidade.
-    - Análise e design: identificação de problemas potenciais de qualidade e implementação
-      de soluções.
-    - Teste: verificação da qualidade do software por meio de testes unitários, 
-      de integração, 
-      de sistema e de aceitação.
-
-```
-
-## Em qual etapa da implementação você considera a qualidade de software?
-```bash
-A qualidade de software é considerada em todas as etapas do ciclo de vida de desenvolvimento
-de software, incluindo:
-    - Documentação: qualidade e clareza da documentação do software.
-    - Manutenibilidade: capacidade de modificar o software sem impactar outras partes.
-    - Testabilidade: facilidade de testar o software para identificar falhas.
-```
 
 # Para executar o projeto
 
