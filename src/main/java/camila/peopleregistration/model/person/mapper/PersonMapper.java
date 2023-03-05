@@ -31,7 +31,7 @@ public class PersonMapper {
     public static PersonEntity requestToEntity(PersonRequest personRequest) {
         return PersonEntity.builder()
                 .name(personRequest.getName())
-                .birthdate(personRequest.getBirthdate())
+                .birthdate(personRequest.getBirthDate())
                 .addresses(personRequest.getAddresses())
                 .build();
     }

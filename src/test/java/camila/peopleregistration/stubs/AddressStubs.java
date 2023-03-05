@@ -21,14 +21,14 @@ public class AddressStubs {
     public static PersonRequest personRequest() {
         return PersonRequest.builder()
                 .name("Camila")
-                .birthdate(new Date())
+                .birthDate(new Date())
                 .addresses(List.of(createAddress()))
                 .build();
     }
 
     public static PersonRequest personRequestWithoutName() {
         return PersonRequest.builder()
-                .birthdate(new Date())
+                .birthDate(new Date())
                 .addresses(List.of(createAddressWithoutNumber()))
                 .build();
     }
@@ -36,7 +36,7 @@ public class AddressStubs {
     public static PersonRequest personRequestWithInvalidName() {
         return PersonRequest.builder()
                 .name(invalidName)
-                .birthdate(new Date())
+                .birthDate(new Date())
                 .addresses(List.of(createAddressWithoutNumber()))
                 .build();
     }
@@ -44,7 +44,7 @@ public class AddressStubs {
     public static PersonRequest personRequestWithInvalidCep() {
         return PersonRequest.builder()
                 .name(invalidName)
-                .birthdate(new Date())
+                .birthDate(new Date())
                 .addresses(List.of(AddressEntity
                         .builder()
                         .cep("9402007")

@@ -43,7 +43,7 @@ public class PersonService {
         return entityToRespopnse(personRepository.findById(id)
                 .map(personEntity -> {
                     personEntity.setName(personRequest.getName());
-                    personEntity.setBirthdate(personRequest.getBirthdate());
+                    personEntity.setBirthdate(personRequest.getBirthDate());
                     addressRepository.findById(personEntity.getAddresses().get(0).getId())
                             .map(addressEntity -> updateAddressEntity(addressEntity, personRequest))
                             .orElseThrow(() -> new NotFoundException("Address not found"));

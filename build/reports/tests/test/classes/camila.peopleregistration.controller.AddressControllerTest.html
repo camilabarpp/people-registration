@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - AddressControllerTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>AddressControllerTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/camila.peopleregistration.controller.html">camila.peopleregistration.controller</a> &gt; AddressControllerTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">8</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">2.613s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Method name</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">Deve retornar erro ConstraintViolationException quando passar um cep inválido no cadastro</td>
+<td class="success">createNewAddressWithoutNumber_shouldReturnBadRequest()</td>
+<td class="success">1.195s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">Deve criar um novo endereço quando passar um id de pessoa existente</td>
+<td class="success">createNewAddress_shouldReturnCreated()</td>
+<td class="success">0.326s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">Deve deletar um endereço quando passar um id de pessoa existente</td>
+<td class="success">deleteAddressByPersonId_shouldReturnCreated()</td>
+<td class="success">0.062s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">Deve retornar erro 404 quando tentar deletar com um id de pessoa inexistente</td>
+<td class="success">deleteAddressByPersonId_shouldReturnNotFound()</td>
+<td class="success">0.031s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">Deve retornar uma lista de endereços quando buscar por id de pessoa existente</td>
+<td class="success">shouldGetAddressesByPersonId()</td>
+<td class="success">0.049s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">Deve retornar erro 404 quando buscar por id de pessoa inexistente</td>
+<td class="success">shouldReturnNotFound()</td>
+<td class="success">0.042s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">Deve atualizar um endereço quando passar um id de pessoa existente</td>
+<td class="success">updateAddressByPersonId_shouldReturnCreated()</td>
+<td class="success">0.267s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">Deve retornar erro 404 quando tentar atualizar com um id de pessoa inexistente</td>
+<td class="success">updateAddressByPersonId_shouldReturnNotFound()</td>
+<td class="success">0.641s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2023-03-02 10:19:48.075  INFO 17259 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [camila.peopleregistration.controller.AddressControllerTest], using SpringBootContextLoader
+2023-03-02 10:19:48.076  INFO 17259 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [camila.peopleregistration.controller.AddressControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2023-03-02 10:19:48.076  INFO 17259 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [camila.peopleregistration.controller.AddressControllerTest]: AddressControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-03-02 10:19:48.091  INFO 17259 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration camila.peopleregistration.PeopleRegistrationApplication for test class camila.peopleregistration.controller.AddressControllerTest
+2023-03-02 10:19:48.093  INFO 17259 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2023-03-02 10:19:48.094  INFO 17259 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5ba1be19, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@56e9cbee, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@2187d7ac, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@3de5f812, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6b62d8c1, org.springframework.test.context.support.DirtiesContextTestExecutionListener@73ccc8f8, org.springframework.test.context.transaction.TransactionalTestExecutionListener@6ce95b9a, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7ede0b7d, org.springframework.test.context.event.EventPublishingTestExecutionListener@38760b7, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@1699e337, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@300a4ff5, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@3e812f6a, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@63b72d5, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@5fe2a97e, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@3df53090]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.5.6)
+
+2023-03-02 10:19:48.126  INFO 17259 --- [    Test worker] c.p.controller.AddressControllerTest     : Starting AddressControllerTest using Java 18.0.2 on forttiori-Lenovo-ideapad-320-15IKB with PID 17259 (started by forttiori in /home/forttiori/Documentos/people-registration)
+2023-03-02 10:19:48.128  INFO 17259 --- [    Test worker] c.p.controller.AddressControllerTest     : No active profile set, falling back to default profiles: default
+2023-03-02 10:19:48.621  INFO 17259 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-03-02 10:19:48.635  INFO 17259 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 2 JPA repository interfaces.
+2023-03-02 10:19:48.740  INFO 17259 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$ed75a31c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-03-02 10:19:48.746  INFO 17259 --- [    Test worker] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2023-03-02 10:19:48.830  INFO 17259 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2023-03-02 10:19:48.831  INFO 17259 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2023-03-02 10:19:48.840  INFO 17259 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-03-02 10:19:48.846  INFO 17259 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+Hibernate: drop table if exists address_entity CASCADE 
+Hibernate: drop table if exists person_entity CASCADE 
+Hibernate: create table address_entity (id bigint generated by default as identity, cep varchar(10) not null, city varchar(100) not null, main_address boolean not null, neighborhood varchar(100) not null, number varchar(10) not null, street varchar(100) not null, uf varchar(2) not null, person_entity_id bigint, primary key (id))
+Hibernate: create table person_entity (id bigint generated by default as identity, birthdate timestamp not null, name varchar(100) not null, status varchar(10) not null, primary key (id))
+Hibernate: alter table address_entity add constraint FK9spv5h8yg5r7fuukb5ifca1nq foreign key (person_entity_id) references person_entity
+2023-03-02 10:19:48.950  INFO 17259 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-03-02 10:19:48.951  INFO 17259 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-03-02 10:19:49.273  WARN 17259 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-03-02 10:19:49.588  INFO 17259 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 13 endpoint(s) beneath base path '/actuator'
+2023-03-02 10:19:49.991  WARN 17259 --- [    Test worker] o.s.b.a.m.MustacheAutoConfiguration      : Cannot find template location: classpath:/templates/ (please add some templates, check your Mustache configuration, or set spring.mustache.check-template-location=false)
+2023-03-02 10:19:50.221  INFO 17259 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2023-03-02 10:19:50.222  INFO 17259 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2023-03-02 10:19:50.225  INFO 17259 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 3 ms
+2023-03-02 10:19:50.597  INFO 17259 --- [    Test worker] c.p.controller.AddressControllerTest     : Started AddressControllerTest in 2.499 seconds (JVM running for 19.443)
+Hibernate: insert into person_entity (id, birthdate, name, status) values (null, ?, ?, ?)
+Hibernate: insert into address_entity (id, cep, city, main_address, neighborhood, number, street, uf) values (null, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: update address_entity set person_entity_id=? where id=?
+Hibernate: insert into address_entity (id, cep, city, main_address, neighborhood, number, street, uf) values (null, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: select personenti0_.id as id1_1_0_, personenti0_.birthdate as birthdat2_1_0_, personenti0_.name as name3_1_0_, personenti0_.status as status4_1_0_ from person_entity personenti0_ where personenti0_.id=? and ( personenti0_.status = 'Ativo')
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /v1/person/2/address/1
+       Parameters = {}
+          Headers = [Content-Type:&quot;application/json;charset=UTF-8&quot;, Content-Length:&quot;151&quot;]
+             Body = {&quot;id&quot;:null,&quot;cep&quot;:&quot;94020070&quot;,&quot;number&quot;:&quot;10&quot;,&quot;uf&quot;:&quot;RS&quot;,&quot;mainAddress&quot;:true,&quot;logradouro&quot;:&quot;Rua João Dutra&quot;,&quot;bairro&quot;:&quot;Salgado Filho&quot;,&quot;localidade&quot;:&quot;Gravatai&quot;}
+    Session Attrs = {}
+
+Handler:
+             Type = camila.peopleregistration.controller.AddressController
+           Method = camila.peopleregistration.controller.AddressController#updateAddress(Long, AddressEntity, Long)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = camila.peopleregistration.configuration.exception.NotFoundException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 404
+    Error message = null
+          Headers = [Content-Type:&quot;application/json&quot;]
+     Content type = application/json
+             Body = {&quot;message&quot;:&quot;Person not found&quot;,&quot;field&quot;:&quot;NOT_FOUND&quot;,&quot;parameter&quot;:&quot;NotFoundException&quot;,&quot;timestamp&quot;:&quot;2023-03-02T10:19:50&quot;}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+Hibernate: select personenti0_.id as id1_1_, personenti0_.birthdate as birthdat2_1_, personenti0_.name as name3_1_, personenti0_.status as status4_1_ from person_entity personenti0_ where ( personenti0_.status = 'Ativo')
+Hibernate: select addresses0_.person_entity_id as person_e9_0_0_, addresses0_.id as id1_0_0_, addresses0_.id as id1_0_1_, addresses0_.cep as cep2_0_1_, addresses0_.city as city3_0_1_, addresses0_.main_address as main_add4_0_1_, addresses0_.neighborhood as neighbor5_0_1_, addresses0_.number as number6_0_1_, addresses0_.street as street7_0_1_, addresses0_.uf as uf8_0_1_ from address_entity addresses0_ where addresses0_.person_entity_id=?
+Hibernate: update address_entity set person_entity_id=null where person_entity_id=?
+Hibernate: delete from address_entity where id=?
+Hibernate: UPDATE PERSON_ENTITY SET status = 'Inativo' WHERE id = ?
+Hibernate: select addressent0_.id as id1_0_, addressent0_.cep as cep2_0_, addressent0_.city as city3_0_, addressent0_.main_address as main_add4_0_, addressent0_.neighborhood as neighbor5_0_, addressent0_.number as number6_0_, addressent0_.street as street7_0_, addressent0_.uf as uf8_0_ from address_entity addressent0_
+Hibernate: delete from address_entity where id=?
+Hibernate: insert into person_entity (id, birthdate, name, status) values (null, ?, ?, ?)
+Hibernate: insert into address_entity (id, cep, city, main_address, neighborhood, number, street, uf) values (null, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: update address_entity set person_entity_id=? where id=?
+Hibernate: insert into address_entity (id, cep, city, main_address, neighborhood, number, street, uf) values (null, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: select personenti0_.id as id1_1_, personenti0_.birthdate as birthdat2_1_, personenti0_.name as name3_1_, personenti0_.status as status4_1_ from person_entity personenti0_ where ( personenti0_.status = 'Ativo')
+Hibernate: select addresses0_.person_entity_id as person_e9_0_0_, addresses0_.id as id1_0_0_, addresses0_.id as id1_0_1_, addresses0_.cep as cep2_0_1_, addresses0_.city as city3_0_1_, addresses0_.main_address as main_add4_0_1_, addresses0_.neighborhood as neighbor5_0_1_, addresses0_.number as number6_0_1_, addresses0_.street as street7_0_1_, addresses0_.uf as uf8_0_1_ from address_entity addresses0_ where addresses0_.person_entity_id=?
+Hibernate: select personenti0_.id as id1_1_0_, personenti0_.birthdate as birthdat2_1_0_, personenti0_.name as name3_1_0_, personenti0_.status as status4_1_0_ from person_entity personenti0_ where personenti0_.id=? and ( personenti0_.status = 'Ativo')
+Hibernate: select addresses0_.person_entity_id as person_e9_0_0_, addresses0_.id as id1_0_0_, addresses0_.id as id1_0_1_, addresses0_.cep as cep2_0_1_, addresses0_.city as city3_0_1_, addresses0_.main_address as main_add4_0_1_, addresses0_.neighborhood as neighbor5_0_1_, addresses0_.number as number6_0_1_, addresses0_.street as street7_0_1_, addresses0_.uf as uf8_0_1_ from address_entity addresses0_ where addresses0_.person_entity_id=?
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /v1/person/2/address/
+       Parameters = {addressId=[3]}
+          Headers = [Content-Type:&quot;application/json;charset=UTF-8&quot;, Content-Length:&quot;118&quot;]
+             Body = {&quot;id&quot;:2,&quot;cep&quot;:&quot;94020050&quot;,&quot;number&quot;:null,&quot;uf&quot;:null,&quot;mainAddress&quot;:null,&quot;logradouro&quot;:null,&quot;bairro&quot;:null,&quot;localidade&quot;:null}
+    Session Attrs = {}
+
+Handler:
+             Type = camila.peopleregistration.controller.AddressController
+           Method = camila.peopleregistration.controller.AddressController#createAddress(AddressEntity, Long)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = javax.validation.ConstraintViolationException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 400
+    Error message = null
+          Headers = [Content-Type:&quot;application/json&quot;]
+     Content type = application/json
+             Body = {&quot;message&quot;:&quot;Missing required fields or invalid data&quot;,&quot;field&quot;:&quot;BAD_REQUEST&quot;,&quot;parameter&quot;:&quot;ConstraintViolationException&quot;,&quot;timestamp&quot;:&quot;2023-03-02T10:19:52&quot;}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+Hibernate: select personenti0_.id as id1_1_, personenti0_.birthdate as birthdat2_1_, personenti0_.name as name3_1_, personenti0_.status as status4_1_ from person_entity personenti0_ where ( personenti0_.status = 'Ativo')
+Hibernate: select addresses0_.person_entity_id as person_e9_0_0_, addresses0_.id as id1_0_0_, addresses0_.id as id1_0_1_, addresses0_.cep as cep2_0_1_, addresses0_.city as city3_0_1_, addresses0_.main_address as main_add4_0_1_, addresses0_.neighborhood as neighbor5_0_1_, addresses0_.number as number6_0_1_, addresses0_.street as street7_0_1_, addresses0_.uf as uf8_0_1_ from address_entity addresses0_ where addresses0_.person_entity_id=?
+Hibernate: update address_entity set person_entity_id=null where person_entity_id=?
+Hibernate: delete from address_entity where id=?
+Hibernate: UPDATE PERSON_ENTITY SET status = 'Inativo' WHERE id = ?
+Hibernate: select addressent0_.id as id1_0_, addressent0_.cep as cep2_0_, addressent0_.city as city3_0_, addressent0_.main_address as main_add4_0_, addressent0_.neighborhood as neighbor5_0_, addressent0_.number as number6_0_, addressent0_.street as street7_0_, addressent0_.uf as uf8_0_ from address_entity addressent0_
+Hibernate: delete from address_entity where id=?
+Hibernate: insert into person_entity (id, birthdate, name, status) values (null, ?, ?, ?)
+Hibernate: insert into address_entity (id, cep, city, main_address, neighborhood, number, street, uf) values (null, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: update address_entity set person_entity_id=? where id=?
+Hibernate: insert into address_entity (id, cep, city, main_address, neighborhood, number, street, uf) values (null, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: select personenti0_.id as id1_1_, personenti0_.birthdate as birthdat2_1_, personenti0_.name as name3_1_, personenti0_.status as status4_1_ from person_entity personenti0_ where ( personenti0_.status = 'Ativo')
+Hibernate: select addresses0_.person_entity_id as person_e9_0_0_, addresses0_.id as id1_0_0_, addresses0_.id as id1_0_1_, addresses0_.cep as cep2_0_1_, addresses0_.city as city3_0_1_, addresses0_.main_address as main_add4_0_1_, addresses0_.neighborhood as neighbor5_0_1_, addresses0_.number as number6_0_1_, addresses0_.street as street7_0_1_, addresses0_.uf as uf8_0_1_ from address_entity addresses0_ where addresses0_.person_entity_id=?
+Hibernate: select personenti0_.id as id1_1_0_, personenti0_.birthdate as birthdat2_1_0_, personenti0_.name as name3_1_0_, personenti0_.status as status4_1_0_ from person_entity personenti0_ where personenti0_.id=? and ( personenti0_.status = 'Ativo')
+Hibernate: select addresses0_.person_entity_id as person_e9_0_0_, addresses0_.id as id1_0_0_, addresses0_.id as id1_0_1_, addresses0_.cep as cep2_0_1_, addresses0_.city as city3_0_1_, addresses0_.main_address as main_add4_0_1_, addresses0_.neighborhood as neighbor5_0_1_, addresses0_.number as number6_0_1_, addresses0_.street as street7_0_1_, addresses0_.uf as uf8_0_1_ from address_entity addresses0_ where addresses0_.person_entity_id=?
+Hibernate: insert into address_entity (id, cep, city, main_address, neighborhood, number, street, uf) values (null, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: update address_entity set person_entity_id=? where id=?
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /v1/person/3/address/
+       Parameters = {}
+          Headers = [Content-Type:&quot;application/json;charset=UTF-8&quot;, Content-Length:&quot;151&quot;]
+             Body = {&quot;id&quot;:null,&quot;cep&quot;:&quot;94020070&quot;,&quot;number&quot;:&quot;10&quot;,&quot;uf&quot;:&quot;RS&quot;,&quot;mainAddress&quot;:true,&quot;logradouro&quot;:&quot;Rua João Dutra&quot;,&quot;bairro&quot;:&quot;Salgado Filho&quot;,&quot;localidade&quot;:&quot;Gravatai&quot;}
+    Session Attrs = {}
+
+Handler:
+             Type = camila.peopleregistration.controller.AddressController
+           Method = camila.peopleregistration.controller.AddressController#createAddress(AddressEntity, Long)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Content-Type:&quot;application/json&quot;]
+     Content type = application/json
+             Body = {&quot;id&quot;:7,&quot;cep&quot;:&quot;94020-070&quot;,&quot;number&quot;:&quot;10&quot;,&quot;uf&quot;:&quot;RS&quot;,&quot;mainAddress&quot;:true,&quot;logradouro&quot;:&quot;Rua JoÃ£o Dutra&quot;,&quot;bairro&quot;:&quot;Salgado Filho&quot;,&quot;localidade&quot;:&quot;GravataÃ­&quot;}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+Hibernate: select personenti0_.id as id1_1_, personenti0_.birthdate as birthdat2_1_, personenti0_.name as name3_1_, personenti0_.status as status4_1_ from person_entity personenti0_ where ( personenti0_.status = 'Ativo')
+Hibernate: select addresses0_.person_entity_id as person_e9_0_0_, addresses0_.id as id1_0_0_, addresses0_.id as id1_0_1_, addresses0_.cep as cep2_0_1_, addresses0_.city as city3_0_1_, addresses0_.main_address as main_add4_0_1_, addresses0_.neighborhood as neighbor5_0_1_, addresses0_.number as number6_0_1_, addresses0_.street as street7_0_1_, addresses0_.uf as uf8_0_1_ from address_entity addresses0_ where addresses0_.person_entity_id=?
+Hibernate: update address_entity set person_entity_id=null where person_entity_id=?
+Hibernate: delete from address_entity where id=?
+Hibernate: delete from address_entity where id=?
+Hibernate: UPDATE PERSON_ENTITY SET status = 'Inativo' WHERE id = ?
+Hibernate: select addressent0_.id as id1_0_, addressent0_.cep as cep2_0_, addressent0_.city as city3_0_, addressent0_.main_address as main_add4_0_, addressent0_.neighborhood as neighbor5_0_, addressent0_.number as number6_0_, addressent0_.street as street7_0_, addressent0_.uf as uf8_0_ from address_entity addressent0_
+Hibernate: delete from address_entity where id=?
+Hibernate: insert into person_entity (id, birthdate, name, status) values (null, ?, ?, ?)
+Hibernate: insert into address_entity (id, cep, city, main_address, neighborhood, number, street, uf) values (null, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: update address_entity set person_entity_id=? where id=?
+Hibernate: insert into address_entity (id, cep, city, main_address, neighborhood, number, street, uf) values (null, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: select personenti0_.id as id1_1_0_, personenti0_.birthdate as birthdat2_1_0_, personenti0_.name as name3_1_0_, personenti0_.status as status4_1_0_ from person_entity personenti0_ where personenti0_.id=? and ( personenti0_.status = 'Ativo')
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /v1/person/2/address/
+       Parameters = {addressId=[1]}
+          Headers = [Content-Type:&quot;application/json;charset=UTF-8&quot;]
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = camila.peopleregistration.controller.AddressController
+           Method = camila.peopleregistration.controller.AddressController#getAddressesByPersonId(Long)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = camila.peopleregistration.configuration.exception.NotFoundException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 404
+    Error message = null
+          Headers = [Content-Type:&quot;application/json&quot;]
+     Content type = application/json
+             Body = {&quot;message&quot;:&quot;Person with id 2 not found&quot;,&quot;field&quot;:&quot;NOT_FOUND&quot;,&quot;parameter&quot;:&quot;NotFoundException&quot;,&quot;timestamp&quot;:&quot;2023-03-02T10:19:52&quot;}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+Hibernate: select personenti0_.id as id1_1_, personenti0_.birthdate as birthdat2_1_, personenti0_.name as name3_1_, personenti0_.status as status4_1_ from person_entity personenti0_ where ( personenti0_.status = 'Ativo')
+Hibernate: select addresses0_.person_entity_id as person_e9_0_0_, addresses0_.id as id1_0_0_, addresses0_.id as id1_0_1_, addresses0_.cep as cep2_0_1_, addresses0_.city as city3_0_1_, addresses0_.main_address as main_add4_0_1_, addresses0_.neighborhood as neighbor5_0_1_, addresses0_.number as number6_0_1_, addresses0_.street as street7_0_1_, addresses0_.uf as uf8_0_1_ from address_entity addresses0_ where addresses0_.person_entity_id=?
+Hibernate: update address_entity set person_entity_id=null where person_entity_id=?
+Hibernate: delete from address_entity where id=?
+Hibernate: UPDATE PERSON_ENTITY SET status = 'Inativo' WHERE id = ?
+Hibernate: select addressent0_.id as id1_0_, addressent0_.cep as cep2_0_, addressent0_.city as city3_0_, addressent0_.main_address as main_add4_0_, addressent0_.neighborhood as neighbor5_0_, addressent0_.number as number6_0_, addressent0_.street as street7_0_, addressent0_.uf as uf8_0_ from address_entity addressent0_
+Hibernate: delete from address_entity where id=?
+Hibernate: insert into person_entity (id, birthdate, name, status) values (null, ?, ?, ?)
+Hibernate: insert into address_entity (id, cep, city, main_address, neighborhood, number, street, uf) values (null, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: update address_entity set person_entity_id=? where id=?
+Hibernate: insert into address_entity (id, cep, city, main_address, neighborhood, number, street, uf) values (null, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: select personenti0_.id as id1_1_, personenti0_.birthdate as birthdat2_1_, personenti0_.name as name3_1_, personenti0_.status as status4_1_ from person_entity personenti0_ where ( personenti0_.status = 'Ativo')
+Hibernate: select addresses0_.person_entity_id as person_e9_0_0_, addresses0_.id as id1_0_0_, addresses0_.id as id1_0_1_, addresses0_.cep as cep2_0_1_, addresses0_.city as city3_0_1_, addresses0_.main_address as main_add4_0_1_, addresses0_.neighborhood as neighbor5_0_1_, addresses0_.number as number6_0_1_, addresses0_.street as street7_0_1_, addresses0_.uf as uf8_0_1_ from address_entity addresses0_ where addresses0_.person_entity_id=?
+Hibernate: select personenti0_.id as id1_1_0_, personenti0_.birthdate as birthdat2_1_0_, personenti0_.name as name3_1_0_, personenti0_.status as status4_1_0_ from person_entity personenti0_ where personenti0_.id=? and ( personenti0_.status = 'Ativo')
+Hibernate: select addresses0_.person_entity_id as person_e9_0_0_, addresses0_.id as id1_0_0_, addresses0_.id as id1_0_1_, addresses0_.cep as cep2_0_1_, addresses0_.city as city3_0_1_, addresses0_.main_address as main_add4_0_1_, addresses0_.neighborhood as neighbor5_0_1_, addresses0_.number as number6_0_1_, addresses0_.street as street7_0_1_, addresses0_.uf as uf8_0_1_ from address_entity addresses0_ where addresses0_.person_entity_id=?
+Hibernate: update address_entity set cep=?, city=?, main_address=?, neighborhood=?, number=?, street=?, uf=? where id=?
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /v1/person/5/address/10
+       Parameters = {}
+          Headers = [Content-Type:&quot;application/json;charset=UTF-8&quot;, Content-Length:&quot;151&quot;]
+             Body = {&quot;id&quot;:null,&quot;cep&quot;:&quot;94020070&quot;,&quot;number&quot;:&quot;10&quot;,&quot;uf&quot;:&quot;RS&quot;,&quot;mainAddress&quot;:true,&quot;logradouro&quot;:&quot;Rua João Dutra&quot;,&quot;bairro&quot;:&quot;Salgado Filho&quot;,&quot;localidade&quot;:&quot;Gravatai&quot;}
+    Session Attrs = {}
+
+Handler:
+             Type = camila.peopleregistration.controller.AddressController
+           Method = camila.peopleregistration.controller.AddressController#updateAddress(Long, AddressEntity, Long)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Content-Type:&quot;application/json&quot;]
+     Content type = application/json
+             Body = {&quot;id&quot;:10,&quot;cep&quot;:&quot;94020-070&quot;,&quot;number&quot;:&quot;10&quot;,&quot;uf&quot;:&quot;RS&quot;,&quot;mainAddress&quot;:true,&quot;logradouro&quot;:&quot;Rua JoÃ£o Dutra&quot;,&quot;bairro&quot;:&quot;Salgado Filho&quot;,&quot;localidade&quot;:&quot;GravataÃ­&quot;}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+Hibernate: select personenti0_.id as id1_1_, personenti0_.birthdate as birthdat2_1_, personenti0_.name as name3_1_, personenti0_.status as status4_1_ from person_entity personenti0_ where ( personenti0_.status = 'Ativo')
+Hibernate: select addresses0_.person_entity_id as person_e9_0_0_, addresses0_.id as id1_0_0_, addresses0_.id as id1_0_1_, addresses0_.cep as cep2_0_1_, addresses0_.city as city3_0_1_, addresses0_.main_address as main_add4_0_1_, addresses0_.neighborhood as neighbor5_0_1_, addresses0_.number as number6_0_1_, addresses0_.street as street7_0_1_, addresses0_.uf as uf8_0_1_ from address_entity addresses0_ where addresses0_.person_entity_id=?
+Hibernate: update address_entity set person_entity_id=null where person_entity_id=?
+Hibernate: delete from address_entity where id=?
+Hibernate: UPDATE PERSON_ENTITY SET status = 'Inativo' WHERE id = ?
+Hibernate: select addressent0_.id as id1_0_, addressent0_.cep as cep2_0_, addressent0_.city as city3_0_, addressent0_.main_address as main_add4_0_, addressent0_.neighborhood as neighbor5_0_, addressent0_.number as number6_0_, addressent0_.street as street7_0_, addressent0_.uf as uf8_0_ from address_entity addressent0_
+Hibernate: delete from address_entity where id=?
+Hibernate: insert into person_entity (id, birthdate, name, status) values (null, ?, ?, ?)
+Hibernate: insert into address_entity (id, cep, city, main_address, neighborhood, number, street, uf) values (null, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: update address_entity set person_entity_id=? where id=?
+Hibernate: insert into address_entity (id, cep, city, main_address, neighborhood, number, street, uf) values (null, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: select personenti0_.id as id1_1_, personenti0_.birthdate as birthdat2_1_, personenti0_.name as name3_1_, personenti0_.status as status4_1_ from person_entity personenti0_ where ( personenti0_.status = 'Ativo')
+Hibernate: select addresses0_.person_entity_id as person_e9_0_0_, addresses0_.id as id1_0_0_, addresses0_.id as id1_0_1_, addresses0_.cep as cep2_0_1_, addresses0_.city as city3_0_1_, addresses0_.main_address as main_add4_0_1_, addresses0_.neighborhood as neighbor5_0_1_, addresses0_.number as number6_0_1_, addresses0_.street as street7_0_1_, addresses0_.uf as uf8_0_1_ from address_entity addresses0_ where addresses0_.person_entity_id=?
+Hibernate: select addressent0_.id as id1_0_0_, addressent0_.cep as cep2_0_0_, addressent0_.city as city3_0_0_, addressent0_.main_address as main_add4_0_0_, addressent0_.neighborhood as neighbor5_0_0_, addressent0_.number as number6_0_0_, addressent0_.street as street7_0_0_, addressent0_.uf as uf8_0_0_ from address_entity addressent0_ where addressent0_.id=?
+Hibernate: delete from address_entity where id=?
+
+MockHttpServletRequest:
+      HTTP Method = DELETE
+      Request URI = /v1/person/6/address/12
+       Parameters = {}
+          Headers = [Content-Type:&quot;application/json;charset=UTF-8&quot;]
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = camila.peopleregistration.controller.AddressController
+           Method = camila.peopleregistration.controller.AddressController#deleteAddress(Long, Long)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 204
+    Error message = null
+          Headers = []
+     Content type = null
+             Body = 
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+Hibernate: select personenti0_.id as id1_1_, personenti0_.birthdate as birthdat2_1_, personenti0_.name as name3_1_, personenti0_.status as status4_1_ from person_entity personenti0_ where ( personenti0_.status = 'Ativo')
+Hibernate: select addresses0_.person_entity_id as person_e9_0_0_, addresses0_.id as id1_0_0_, addresses0_.id as id1_0_1_, addresses0_.cep as cep2_0_1_, addresses0_.city as city3_0_1_, addresses0_.main_address as main_add4_0_1_, addresses0_.neighborhood as neighbor5_0_1_, addresses0_.number as number6_0_1_, addresses0_.street as street7_0_1_, addresses0_.uf as uf8_0_1_ from address_entity addresses0_ where addresses0_.person_entity_id=?
+Hibernate: UPDATE PERSON_ENTITY SET status = 'Inativo' WHERE id = ?
+Hibernate: select addressent0_.id as id1_0_, addressent0_.cep as cep2_0_, addressent0_.city as city3_0_, addressent0_.main_address as main_add4_0_, addressent0_.neighborhood as neighbor5_0_, addressent0_.number as number6_0_, addressent0_.street as street7_0_, addressent0_.uf as uf8_0_ from address_entity addressent0_
+Hibernate: delete from address_entity where id=?
+Hibernate: insert into person_entity (id, birthdate, name, status) values (null, ?, ?, ?)
+Hibernate: insert into address_entity (id, cep, city, main_address, neighborhood, number, street, uf) values (null, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: update address_entity set person_entity_id=? where id=?
+Hibernate: insert into address_entity (id, cep, city, main_address, neighborhood, number, street, uf) values (null, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: select addressent0_.id as id1_0_0_, addressent0_.cep as cep2_0_0_, addressent0_.city as city3_0_0_, addressent0_.main_address as main_add4_0_0_, addressent0_.neighborhood as neighbor5_0_0_, addressent0_.number as number6_0_0_, addressent0_.street as street7_0_0_, addressent0_.uf as uf8_0_0_ from address_entity addressent0_ where addressent0_.id=?
+
+MockHttpServletRequest:
+      HTTP Method = DELETE
+      Request URI = /v1/person/7/address/12
+       Parameters = {}
+          Headers = [Content-Type:&quot;application/json;charset=UTF-8&quot;]
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = camila.peopleregistration.controller.AddressController
+           Method = camila.peopleregistration.controller.AddressController#deleteAddress(Long, Long)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = camila.peopleregistration.configuration.exception.NotFoundException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 404
+    Error message = null
+          Headers = [Content-Type:&quot;application/json&quot;]
+     Content type = application/json
+             Body = {&quot;message&quot;:&quot;Address with ID 12 not found for person with ID 7&quot;,&quot;field&quot;:&quot;NOT_FOUND&quot;,&quot;parameter&quot;:&quot;NotFoundException&quot;,&quot;timestamp&quot;:&quot;2023-03-02T10:19:53&quot;}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+Hibernate: select personenti0_.id as id1_1_, personenti0_.birthdate as birthdat2_1_, personenti0_.name as name3_1_, personenti0_.status as status4_1_ from person_entity personenti0_ where ( personenti0_.status = 'Ativo')
+Hibernate: select addresses0_.person_entity_id as person_e9_0_0_, addresses0_.id as id1_0_0_, addresses0_.id as id1_0_1_, addresses0_.cep as cep2_0_1_, addresses0_.city as city3_0_1_, addresses0_.main_address as main_add4_0_1_, addresses0_.neighborhood as neighbor5_0_1_, addresses0_.number as number6_0_1_, addresses0_.street as street7_0_1_, addresses0_.uf as uf8_0_1_ from address_entity addresses0_ where addresses0_.person_entity_id=?
+Hibernate: update address_entity set person_entity_id=null where person_entity_id=?
+Hibernate: delete from address_entity where id=?
+Hibernate: UPDATE PERSON_ENTITY SET status = 'Inativo' WHERE id = ?
+Hibernate: select addressent0_.id as id1_0_, addressent0_.cep as cep2_0_, addressent0_.city as city3_0_, addressent0_.main_address as main_add4_0_, addressent0_.neighborhood as neighbor5_0_, addressent0_.number as number6_0_, addressent0_.street as street7_0_, addressent0_.uf as uf8_0_ from address_entity addressent0_
+Hibernate: delete from address_entity where id=?
+Hibernate: insert into person_entity (id, birthdate, name, status) values (null, ?, ?, ?)
+Hibernate: insert into address_entity (id, cep, city, main_address, neighborhood, number, street, uf) values (null, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: update address_entity set person_entity_id=? where id=?
+Hibernate: insert into address_entity (id, cep, city, main_address, neighborhood, number, street, uf) values (null, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: select personenti0_.id as id1_1_, personenti0_.birthdate as birthdat2_1_, personenti0_.name as name3_1_, personenti0_.status as status4_1_ from person_entity personenti0_ where ( personenti0_.status = 'Ativo')
+Hibernate: select addresses0_.person_entity_id as person_e9_0_0_, addresses0_.id as id1_0_0_, addresses0_.id as id1_0_1_, addresses0_.cep as cep2_0_1_, addresses0_.city as city3_0_1_, addresses0_.main_address as main_add4_0_1_, addresses0_.neighborhood as neighbor5_0_1_, addresses0_.number as number6_0_1_, addresses0_.street as street7_0_1_, addresses0_.uf as uf8_0_1_ from address_entity addresses0_ where addresses0_.person_entity_id=?
+Hibernate: select personenti0_.id as id1_1_0_, personenti0_.birthdate as birthdat2_1_0_, personenti0_.name as name3_1_0_, personenti0_.status as status4_1_0_ from person_entity personenti0_ where personenti0_.id=? and ( personenti0_.status = 'Ativo')
+Hibernate: select addresses0_.person_entity_id as person_e9_0_0_, addresses0_.id as id1_0_0_, addresses0_.id as id1_0_1_, addresses0_.cep as cep2_0_1_, addresses0_.city as city3_0_1_, addresses0_.main_address as main_add4_0_1_, addresses0_.neighborhood as neighbor5_0_1_, addresses0_.number as number6_0_1_, addresses0_.street as street7_0_1_, addresses0_.uf as uf8_0_1_ from address_entity addresses0_ where addresses0_.person_entity_id=?
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /v1/person/8/address/
+       Parameters = {}
+          Headers = [Content-Type:&quot;application/json;charset=UTF-8&quot;]
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = camila.peopleregistration.controller.AddressController
+           Method = camila.peopleregistration.controller.AddressController#getAddressesByPersonId(Long)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:&quot;application/json&quot;]
+     Content type = application/json
+             Body = [{&quot;id&quot;:16,&quot;cep&quot;:&quot;94020070&quot;,&quot;number&quot;:&quot;10&quot;,&quot;uf&quot;:&quot;RS&quot;,&quot;mainAddress&quot;:true,&quot;logradouro&quot;:&quot;Rua JoÃ£o Dutra&quot;,&quot;bairro&quot;:&quot;Salgado Filho&quot;,&quot;localidade&quot;:&quot;Gravatai&quot;}]
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+Hibernate: select personenti0_.id as id1_1_, personenti0_.birthdate as birthdat2_1_, personenti0_.name as name3_1_, personenti0_.status as status4_1_ from person_entity personenti0_ where ( personenti0_.status = 'Ativo')
+Hibernate: select addresses0_.person_entity_id as person_e9_0_0_, addresses0_.id as id1_0_0_, addresses0_.id as id1_0_1_, addresses0_.cep as cep2_0_1_, addresses0_.city as city3_0_1_, addresses0_.main_address as main_add4_0_1_, addresses0_.neighborhood as neighbor5_0_1_, addresses0_.number as number6_0_1_, addresses0_.street as street7_0_1_, addresses0_.uf as uf8_0_1_ from address_entity addresses0_ where addresses0_.person_entity_id=?
+Hibernate: update address_entity set person_entity_id=null where person_entity_id=?
+Hibernate: delete from address_entity where id=?
+Hibernate: UPDATE PERSON_ENTITY SET status = 'Inativo' WHERE id = ?
+Hibernate: select addressent0_.id as id1_0_, addressent0_.cep as cep2_0_, addressent0_.city as city3_0_, addressent0_.main_address as main_add4_0_, addressent0_.neighborhood as neighbor5_0_, addressent0_.number as number6_0_, addressent0_.street as street7_0_, addressent0_.uf as uf8_0_ from address_entity addressent0_
+Hibernate: delete from address_entity where id=?
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 7.5.1</a> at 2 de mar. de 2023 10:19:59</p>
+</div>
+</div>
+</body>
+</html>
