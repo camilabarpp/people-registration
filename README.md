@@ -13,12 +13,13 @@
 
 Git clone no repositório people-registration
 ```bash 
-https://github.com/camilabarpp/people-registration
+git clone https://github.com/camilabarpp/people-registration
 ```
 
 Após aberto o projeto na sua ide, rode este comando no terminal:
 ```bash
 gradle build
+gradle bootRun
 ```
 
 
@@ -105,8 +106,7 @@ http://localhost:8080/v1/person/1/address/2
 - H2 Database
 - ViaCep API
 
-Aplicação em H2
-[H2 Database](http://localhost:8080/h2-console/)
+Aplicação em [H2 Database](http://localhost:8080/h2-console/)
 
 ## Autor
 
