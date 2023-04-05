@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="camila.peopleregistration.exceptions.ApiExceptionHandlerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2023-04-05T13:03:35" hostname="forttiori-Lenovo-ideapad-320-15IKB" time="0.108">
+  <properties/>
+  <testcase name="Deve lançar HttpClientErrorException" classname="camila.peopleregistration.exceptions.ApiExceptionHandlerTest" time="0.01"/>
+  <testcase name="Deve lançar HttpRequestMethodNotSupportedException" classname="camila.peopleregistration.exceptions.ApiExceptionHandlerTest" time="0.023"/>
+  <testcase name="Deve lançar NullPointerException" classname="camila.peopleregistration.exceptions.ApiExceptionHandlerTest" time="0.008"/>
+  <testcase name="Deve lançar ResponseStatusException" classname="camila.peopleregistration.exceptions.ApiExceptionHandlerTest" time="0.011"/>
+  <testcase name="Deve lançar Exception" classname="camila.peopleregistration.exceptions.ApiExceptionHandlerTest" time="0.021"/>
+  <testcase name="Deve lançar NotFoundException" classname="camila.peopleregistration.exceptions.ApiExceptionHandlerTest" time="0.015"/>
+  <system-out><![CDATA[2023-04-05 10:03:34.222  INFO 8201 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [camila.peopleregistration.exceptions.ApiExceptionHandlerTest], using SpringBootContextLoader
+2023-04-05 10:03:34.227  INFO 8201 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [camila.peopleregistration.exceptions.ApiExceptionHandlerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2023-04-05 10:03:34.227  INFO 8201 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [camila.peopleregistration.exceptions.ApiExceptionHandlerTest]: ApiExceptionHandlerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-04-05 10:03:34.255  INFO 8201 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration camila.peopleregistration.PeopleRegistrationApplication for test class camila.peopleregistration.exceptions.ApiExceptionHandlerTest
+2023-04-05 10:03:34.256  INFO 8201 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2023-04-05 10:03:34.256  INFO 8201 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@60978427, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@2bbc2154, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@1c486bf5, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@380e9789, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@64649a13, org.springframework.test.context.support.DirtiesContextTestExecutionListener@2e98b14a, org.springframework.test.context.transaction.TransactionalTestExecutionListener@715070af, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3dae13d3, org.springframework.test.context.event.EventPublishingTestExecutionListener@7ddaa277, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@16a34e67, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@64848114, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@29f936dc, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@118e08e, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@d4446bc, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@4d88fa21]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.5.6)
+
+2023-04-05 10:03:34.563  INFO 8201 --- [    Test worker] c.p.exceptions.ApiExceptionHandlerTest   : Starting ApiExceptionHandlerTest using Java 17.0.2 on forttiori-Lenovo-ideapad-320-15IKB with PID 8201 (started by forttiori in /home/forttiori/Documentos/people-registration)
+2023-04-05 10:03:34.563  INFO 8201 --- [    Test worker] c.p.exceptions.ApiExceptionHandlerTest   : The following profiles are active: test
+2023-04-05 10:03:35.220  WARN 8201 --- [    Test worker] o.s.b.a.m.MustacheAutoConfiguration      : Cannot find template location: classpath:/templates/ (please add some templates, check your Mustache configuration, or set spring.mustache.check-template-location=false)
+2023-04-05 10:03:35.269  INFO 8201 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2023-04-05 10:03:35.269  INFO 8201 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2023-04-05 10:03:35.270  INFO 8201 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2023-04-05 10:03:35.284  INFO 8201 --- [    Test worker] c.p.exceptions.ApiExceptionHandlerTest   : Started ApiExceptionHandlerTest in 0.798 seconds (JVM running for 40.889)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

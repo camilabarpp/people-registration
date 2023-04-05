@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="camila.peopleregistration.integration.CepIntegrationTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-04-05T13:03:38" hostname="forttiori-Lenovo-ideapad-320-15IKB" time="0.944">
+  <properties/>
+  <testcase name="Deve pesquisar CEP na api externa" classname="camila.peopleregistration.integration.CepIntegrationTest" time="0.906"/>
+  <testcase name="Deve lançar ApiNotFoundException quando o cep estiver em branco" classname="camila.peopleregistration.integration.CepIntegrationTest" time="0.037"/>
+  <system-out><![CDATA[2023-04-05 10:03:38.469  INFO 8201 --- [erver-EventLog0] org.mockserver.log.MockServerEventLog    : 42771 started on port: 42771
+2023-04-05 10:03:39.311  INFO 8201 --- [erver-EventLog0] org.mockserver.log.MockServerEventLog    : 42771 creating expectation:
+
+  {
+    "httpRequest" : {
+      "method" : "GET",
+      "path" : "/ws/94020070/json"
+    },
+    "httpResponse" : {
+      "statusCode" : 200,
+      "reasonPhrase" : "OK",
+      "headers" : {
+        "Content-Type" : [ "application/json" ]
+      },
+      "body" : "{\"id\":null,\"cep\":\"94020070\",\"number\":\"10\",\"uf\":\"RS\",\"mainAddress\":true,\"logradouro\":\"Rua João Dutra\",\"bairro\":\"Salgado Filho\",\"localidade\":\"Gravatai\"}"
+    },
+    "id" : "8b04d455-484b-4790-ae69-86315c306f03",
+    "priority" : 0,
+    "timeToLive" : {
+      "unlimited" : true
+    },
+    "times" : {
+      "unlimited" : true
+    }
+  }
+
+ with id:
+
+  8b04d455-484b-4790-ae69-86315c306f03
+
+2023-04-05 10:03:39.357  INFO 8201 --- [erver-EventLog0] org.mockserver.log.MockServerEventLog    : 42771 received request:
+
+  {
+    "method" : "GET",
+    "path" : "/ws/94020070/json",
+    "headers" : {
+      "content-length" : [ "0" ],
+      "content-encoding" : [ ".*" ],
+      "User-Agent" : [ "Apache-HttpClient/4.5.13 (Java/17.0.2)" ],
+      "Host" : [ "localhost:42771" ],
+      "Connection" : [ "Keep-Alive" ],
+      "Accept-Encoding" : [ "gzip,deflate" ],
+      "Accept" : [ "application/json, application/*+json" ]
+    },
+    "keepAlive" : true,
+    "secure" : false,
+    "localAddress" : "127.0.0.1:42771",
+    "remoteAddress" : "127.0.0.1"
+  }
+
+2023-04-05 10:03:39.361  INFO 8201 --- [erver-EventLog0] org.mockserver.log.MockServerEventLog    : 42771 request:
+
+  {
+    "method" : "GET",
+    "path" : "/ws/94020070/json",
+    "headers" : {
+      "content-length" : [ "0" ],
+      "content-encoding" : [ ".*" ],
+      "User-Agent" : [ "Apache-HttpClient/4.5.13 (Java/17.0.2)" ],
+      "Host" : [ "localhost:42771" ],
+      "Connection" : [ "Keep-Alive" ],
+      "Accept-Encoding" : [ "gzip,deflate" ],
+      "Accept" : [ "application/json, application/*+json" ]
+    },
+    "keepAlive" : true,
+    "secure" : false,
+    "localAddress" : "127.0.0.1:42771",
+    "remoteAddress" : "127.0.0.1"
+  }
+
+ matched expectation:
+
+  {
+    "httpRequest" : {
+      "method" : "GET",
+      "path" : "/ws/94020070/json"
+    },
+    "httpResponse" : {
+      "statusCode" : 200,
+      "reasonPhrase" : "OK",
+      "headers" : {
+        "Content-Type" : [ "application/json" ]
+      },
+      "body" : "{\"id\":null,\"cep\":\"94020070\",\"number\":\"10\",\"uf\":\"RS\",\"mainAddress\":true,\"logradouro\":\"Rua João Dutra\",\"bairro\":\"Salgado Filho\",\"localidade\":\"Gravatai\"}"
+    },
+    "id" : "8b04d455-484b-4790-ae69-86315c306f03",
+    "priority" : 0,
+    "timeToLive" : {
+      "unlimited" : true
+    },
+    "times" : {
+      "unlimited" : true
+    }
+  }
+
+2023-04-05 10:03:39.367  INFO 8201 --- [erver-EventLog0] org.mockserver.log.MockServerEventLog    : 42771 returning response:
+
+  {
+    "statusCode" : 200,
+    "reasonPhrase" : "OK",
+    "headers" : {
+      "Content-Type" : [ "application/json" ]
+    },
+    "body" : "{\"id\":null,\"cep\":\"94020070\",\"number\":\"10\",\"uf\":\"RS\",\"mainAddress\":true,\"logradouro\":\"Rua João Dutra\",\"bairro\":\"Salgado Filho\",\"localidade\":\"Gravatai\"}"
+  }
+
+ for request:
+
+  {
+    "method" : "GET",
+    "path" : "/ws/94020070/json",
+    "headers" : {
+      "content-length" : [ "0" ],
+      "content-encoding" : [ ".*" ],
+      "User-Agent" : [ "Apache-HttpClient/4.5.13 (Java/17.0.2)" ],
+      "Host" : [ "localhost:42771" ],
+      "Connection" : [ "Keep-Alive" ],
+      "Accept-Encoding" : [ "gzip,deflate" ],
+      "Accept" : [ "application/json, application/*+json" ]
+    },
+    "keepAlive" : true,
+    "secure" : false,
+    "localAddress" : "127.0.0.1:42771",
+    "remoteAddress" : "127.0.0.1"
+  }
+
+ for action:
+
+  {
+    "statusCode" : 200,
+    "reasonPhrase" : "OK",
+    "headers" : {
+      "Content-Type" : [ "application/json" ]
+    },
+    "body" : "{\"id\":null,\"cep\":\"94020070\",\"number\":\"10\",\"uf\":\"RS\",\"mainAddress\":true,\"logradouro\":\"Rua João Dutra\",\"bairro\":\"Salgado Filho\",\"localidade\":\"Gravatai\"}"
+  }
+
+ from expectation:
+
+  8b04d455-484b-4790-ae69-86315c306f03
+
+2023-04-05 10:03:39.415  INFO 8201 --- [erver-EventLog0] org.mockserver.log.MockServerEventLog    : 42771 stopped for port: 42771
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
