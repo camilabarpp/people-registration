@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PersonController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">people-registration</a> &gt; <a href="index.source.html" class="el_package">camila.peopleregistration.controller</a> &gt; <span class="el_source">PersonController.java</span></div><h1>PersonController.java</h1><pre class="source lang-java linenums">package camila.peopleregistration.controller;
+
+import camila.peopleregistration.model.person.request.PersonRequest;
+import camila.peopleregistration.model.person.response.PersonResponse;
+import camila.peopleregistration.service.PersonService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import javax.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+import static org.springframework.http.HttpStatus.CREATED;
+import static org.springframework.http.HttpStatus.NO_CONTENT;
+
+@CrossOrigin(origins = &quot;http://localhost:4200&quot;)
+@RestController
+@RequestMapping(&quot;/v1/person/&quot;)
+<span class="fc" id="L20">@RequiredArgsConstructor</span>
+@Api(value = &quot;People Registration API&quot;)
+public class PersonController {
+
+    private final PersonService personService;
+
+    @GetMapping
+    @ApiOperation(&quot;Show all people&quot;)
+    public List&lt;PersonResponse&gt; findAll() {
+<span class="fc" id="L29">        return personService.findAll();</span>
+    }
+
+    @GetMapping(&quot;/{id}&quot;)
+    @ApiOperation(&quot;Show person by id&quot;)
+    public PersonResponse findById(@PathVariable Long id) {
+<span class="nc" id="L35">        return personService.findById(id);</span>
+    }
+
+    @PostMapping
+    @ResponseStatus(CREATED)
+    @ApiOperation(&quot;Create person&quot;)
+    public PersonResponse create(@RequestBody @Valid PersonRequest personRequest) {
+<span class="fc" id="L42">        return personService.create(personRequest);</span>
+    }
+
+    @PutMapping(&quot;/{id}&quot;)
+    @ApiOperation(&quot;Update person&quot;)
+    public PersonResponse update(@PathVariable Long id, @RequestBody @Valid PersonRequest personRequest) {
+<span class="nc" id="L48">        return personService.update(id, personRequest);</span>
+    }
+
+    @DeleteMapping(&quot;/{id}&quot;)
+    @ResponseStatus(NO_CONTENT)
+    @ApiOperation(&quot;Delete person by ID&quot;)
+    public void deleteById(@PathVariable Long id) {
+<span class="nc" id="L55">        personService.deleteById(id);}</span>
+
+    @DeleteMapping
+    @ResponseStatus(NO_CONTENT)
+    @ApiOperation(&quot;Delete all people&quot;)
+    public void deleteAll() {
+<span class="fc" id="L61">        personService.deleteAll();</span>
+<span class="fc" id="L62">    }}</span>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

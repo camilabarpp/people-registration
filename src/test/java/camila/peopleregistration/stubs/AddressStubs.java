@@ -5,7 +5,7 @@ import camila.peopleregistration.model.person.entity.PersonEntity;
 import camila.peopleregistration.model.person.request.PersonRequest;
 import camila.peopleregistration.model.person.response.PersonResponse;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public class AddressStubs {
@@ -21,14 +21,14 @@ public class AddressStubs {
     public static PersonRequest personRequest() {
         return PersonRequest.builder()
                 .name("Camila")
-                .birthdate(new Date())
+                .birthdate(LocalDate.now())
                 .addresses(List.of(createAddress()))
                 .build();
     }
 
     public static PersonRequest personRequestWithoutName() {
         return PersonRequest.builder()
-                .birthdate(new Date())
+                .birthdate(LocalDate.now())
                 .addresses(List.of(createAddressWithoutNumber()))
                 .build();
     }
@@ -36,7 +36,7 @@ public class AddressStubs {
     public static PersonRequest personRequestWithInvalidName() {
         return PersonRequest.builder()
                 .name(invalidName)
-                .birthdate(new Date())
+                .birthdate(LocalDate.now())
                 .addresses(List.of(createAddressWithoutNumber()))
                 .build();
     }
@@ -44,7 +44,7 @@ public class AddressStubs {
     public static PersonRequest personRequestWithInvalidCep() {
         return PersonRequest.builder()
                 .name(invalidName)
-                .birthdate(new Date())
+                .birthdate(LocalDate.now())
                 .addresses(List.of(AddressEntity
                         .builder()
                         .cep("9402007")
@@ -55,7 +55,7 @@ public class AddressStubs {
     public static PersonEntity personEntity() {
         return PersonEntity.builder()
                 .name("Camila")
-                .birthdate(new Date())
+                .birthdate(LocalDate.now())
                 .addresses(List.of(createAddress()))
                 .build();
     }
@@ -63,7 +63,7 @@ public class AddressStubs {
     public static PersonResponse personResponse() {
         return PersonResponse.builder()
                 .name("Camila")
-                .birthdate(new Date())
+                .birthdate(LocalDate.now())
                 .addresses(List.of(createAddress()))
                 .build();
     }

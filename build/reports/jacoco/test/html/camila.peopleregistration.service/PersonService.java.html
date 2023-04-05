@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PersonService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">people-registration</a> &gt; <a href="index.source.html" class="el_package">camila.peopleregistration.service</a> &gt; <span class="el_source">PersonService.java</span></div><h1>PersonService.java</h1><pre class="source lang-java linenums">package camila.peopleregistration.service;
+
+import camila.peopleregistration.configuration.exception.NotFoundException;
+import camila.peopleregistration.model.address.entity.AddressEntity;
+import camila.peopleregistration.model.person.request.PersonRequest;
+import camila.peopleregistration.model.person.response.PersonResponse;
+import camila.peopleregistration.repository.AddressRepository;
+import camila.peopleregistration.repository.PersonRepository;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+import static camila.peopleregistration.model.person.mapper.PersonMapper.*;
+
+@Service
+<span class="fc" id="L18">@Slf4j</span>
+<span class="fc" id="L19">@RequiredArgsConstructor</span>
+public class PersonService {
+
+    private final PersonRepository personRepository;
+
+    private final AddressRepository addressRepository;
+
+    private final AddressService addressService;
+
+    public List&lt;PersonResponse&gt; findAll() {
+<span class="fc" id="L29">        return responseFromEntityList(personRepository.findAll());</span>
+    }
+
+    public PersonResponse findById(Long id) {
+<span class="fc" id="L33">        return entityToRespopnse(personRepository.findById(id).orElseThrow(() -&gt; new NotFoundException(&quot;Person not found&quot;)));</span>
+    }
+
+    public PersonResponse create(PersonRequest personRequest) {
+        //Método que pesquisa o cep na api e salva no cadastro da pessoa
+<span class="fc" id="L38">        addressService.searchCep(personRequest);</span>
+<span class="fc" id="L39">        return entityToRespopnse(personRepository.save(requestToEntity(personRequest)));</span>
+    }
+
+    public PersonResponse update(Long id, PersonRequest personRequest) {
+<span class="fc" id="L43">        return entityToRespopnse(personRepository.findById(id)</span>
+<span class="fc" id="L44">                .map(personEntity -&gt; {</span>
+<span class="fc" id="L45">                    personEntity.setName(personRequest.getName());</span>
+<span class="fc" id="L46">                    personEntity.setBirthdate(personRequest.getBirthdate());</span>
+<span class="fc" id="L47">                    addressRepository.findById(personEntity.getAddresses().get(0).getId())</span>
+<span class="fc" id="L48">                            .map(addressEntity -&gt; updateAddressEntity(addressEntity, personRequest))</span>
+<span class="pc" id="L49">                            .orElseThrow(() -&gt; new NotFoundException(&quot;Address not found&quot;));</span>
+<span class="fc" id="L50">                    return personRepository.save(personEntity);</span>
+                })
+<span class="fc" id="L52">                .orElseThrow( () -&gt; new NotFoundException(&quot;Person not found&quot;)));</span>
+    }
+
+    private AddressEntity updateAddressEntity(AddressEntity address, PersonRequest personRequest) {
+<span class="fc" id="L56">        AddressEntity addressInfo = addressService.searchCep(personRequest);</span>
+<span class="fc" id="L57">        address.setCep(addressInfo.getCep());</span>
+<span class="fc" id="L58">        address.setStreet(addressInfo.getStreet());</span>
+<span class="fc" id="L59">        address.setNumber(addressInfo.getNumber());</span>
+<span class="fc" id="L60">        address.setNeighborhood(addressInfo.getNeighborhood());</span>
+<span class="fc" id="L61">        address.setCity(addressInfo.getCity());</span>
+<span class="fc" id="L62">        address.setUf(addressInfo.getUf());</span>
+<span class="fc" id="L63">        address.setMainAddress(addressInfo.getMainAddress());</span>
+<span class="fc" id="L64">        return address;</span>
+    }
+
+    //Fiz um soft delete, pois não acho interessante deletar completamente do banco
+    public void deleteById(Long id) {
+<span class="fc bfc" id="L69" title="All 2 branches covered.">        if (!personRepository.existsById(id)) {</span>
+<span class="fc" id="L70">            throw new NotFoundException(&quot;Person not found&quot;);</span>
+        }
+<span class="fc" id="L72">        personRepository.deleteById(id);</span>
+<span class="fc" id="L73">    }</span>
+
+    public void deleteAll() {
+<span class="fc" id="L76">        personRepository.deleteAll();</span>
+<span class="fc" id="L77">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

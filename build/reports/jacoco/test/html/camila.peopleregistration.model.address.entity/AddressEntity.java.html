@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AddressEntity.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">people-registration</a> &gt; <a href="index.source.html" class="el_package">camila.peopleregistration.model.address.entity</a> &gt; <span class="el_source">AddressEntity.java</span></div><h1>AddressEntity.java</h1><pre class="source lang-java linenums">package camila.peopleregistration.model.address.entity;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import static javax.persistence.GenerationType.IDENTITY;
+
+<span class="pc bpc" id="L21" title="48 of 70 branches missed.">@Data</span>
+<span class="pc" id="L22">@Builder</span>
+<span class="fc" id="L23">@AllArgsConstructor</span>
+<span class="fc" id="L24">@NoArgsConstructor</span>
+@ApiModel(value = &quot;AddressEntity&quot;, description = &quot;AddressEntity&quot;)
+@Entity
+public class AddressEntity {
+
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @ApiModelProperty(notes = &quot;ID of the address&quot;)
+<span class="fc" id="L32">    private Long id;</span>
+
+    @NotBlank
+    @ApiModelProperty(notes = &quot;CEP of the user&quot;)
+    @Column(length = 10, nullable = false)
+    @Length(min = 8, message = &quot;teste&quot;)
+<span class="fc" id="L38">    private String cep;</span>
+    @ApiModelProperty(notes = &quot;Street of the person&quot;)
+    @JsonProperty(&quot;logradouro&quot;)
+    @Column(length = 100, nullable = false)
+<span class="fc" id="L42">    private String street;</span>
+
+    @NotBlank
+    @ApiModelProperty(notes = &quot;Number of the person&quot;)
+    @Column(length = 10, nullable = false)
+<span class="fc" id="L47">    private String number;</span>
+
+    @ApiModelProperty(notes = &quot;Neighborhood of the person&quot;)
+    @JsonProperty(&quot;bairro&quot;)
+    @Column(length = 100, nullable = false)
+<span class="fc" id="L52">    private String neighborhood;</span>
+    @ApiModelProperty(notes = &quot;City of the person&quot;)
+    @JsonProperty(&quot;localidade&quot;)
+    @Column(length = 100, nullable = false)
+<span class="fc" id="L56">    private String city;</span>
+    @ApiModelProperty(notes = &quot;State of the person&quot;)
+    @Column(length = 2, nullable = false)
+<span class="fc" id="L59">    private String uf;</span>
+
+    @NotNull
+    @ApiModelProperty(notes = &quot;Main address of the person&quot;)
+    @Column(length = 5, nullable = false)
+<span class="fc" id="L64">    private Boolean mainAddress;</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

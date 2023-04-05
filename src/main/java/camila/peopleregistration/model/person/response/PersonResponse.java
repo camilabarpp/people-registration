@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class PersonResponse {
 
     private String name;
     @JsonFormat(pattern = "dd/MM/yyyy")
-    private Date birthdate;
+    private LocalDate birthdate;
 
     private List<AddressEntity> addresses;
 }

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AddressService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">people-registration</a> &gt; <a href="index.source.html" class="el_package">camila.peopleregistration.service</a> &gt; <span class="el_source">AddressService.java</span></div><h1>AddressService.java</h1><pre class="source lang-java linenums">package camila.peopleregistration.service;
+
+import camila.peopleregistration.configuration.exception.NotFoundException;
+import camila.peopleregistration.integration.IntegrationCep;
+import camila.peopleregistration.model.address.entity.AddressEntity;
+import camila.peopleregistration.model.person.entity.PersonEntity;
+import camila.peopleregistration.model.person.request.PersonRequest;
+import camila.peopleregistration.repository.AddressRepository;
+import camila.peopleregistration.repository.PersonRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+import static camila.peopleregistration.model.person.mapper.PersonMapper.toList;
+
+@Service
+<span class="fc" id="L19">@RequiredArgsConstructor</span>
+public class AddressService {
+
+    private final IntegrationCep integration;
+
+    private final AddressRepository repository;
+
+    private final PersonRepository personRepository;
+
+    public AddressEntity searchCep(PersonRequest personRequest) {
+<span class="fc bfc" id="L29" title="All 2 branches covered.">        if (!personRequest.getAddresses().get(0).getCep().isEmpty()) {</span>
+<span class="fc" id="L30">            var cep = personRequest.getAddresses().get(0).getCep();</span>
+<span class="fc" id="L31">            var newAddress = this.integration.findCep(cep);</span>
+
+<span class="fc" id="L33">            newAddress.setNumber(personRequest.getAddresses().get(0).getNumber());</span>
+<span class="fc" id="L34">            newAddress.setMainAddress(personRequest.getAddresses().get(0).getMainAddress());</span>
+<span class="fc" id="L35">            personRequest.setAddresses(toList(newAddress));</span>
+<span class="fc" id="L36">            return newAddress;</span>
+        } else {
+<span class="fc" id="L38">            throw new NotFoundException(&quot;CEP not found&quot;);</span>
+        }
+    }
+
+    public List&lt;AddressEntity&gt; getAddressesByPersonId(Long id) {
+<span class="fc" id="L43">        PersonEntity person = personRepository.findById(id)</span>
+<span class="fc" id="L44">                .orElseThrow(() -&gt; new NotFoundException(&quot;Person with id &quot; + id + &quot; not found&quot;));</span>
+<span class="fc" id="L45">        return person.getAddresses();</span>
+    }
+
+
+    public AddressEntity createNewAddress(AddressEntity address, Long personId) {
+<span class="fc" id="L50">        PersonEntity person = personRepository.findById(personId)</span>
+<span class="fc" id="L51">                .orElseThrow(() -&gt; new NotFoundException(&quot;Person not found with id &quot; + personId));</span>
+
+<span class="fc" id="L53">        AddressEntity newAddress = integration.findCep(address.getCep());</span>
+<span class="fc" id="L54">        newAddress.setNumber(address.getNumber());</span>
+<span class="fc" id="L55">        newAddress.setMainAddress(address.getMainAddress());</span>
+<span class="fc" id="L56">        address = repository.save(newAddress);</span>
+
+<span class="fc" id="L58">        person.getAddresses().add(0, address);</span>
+<span class="fc" id="L59">        personRepository.save(person);</span>
+
+<span class="fc" id="L61">        return address;</span>
+    }
+
+
+    public AddressEntity updateAddressByPersonId(AddressEntity addressEntity, Long personId, Long addressId) {
+<span class="fc" id="L66">        Optional&lt;PersonEntity&gt; person = personRepository.findById(personId);</span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">        if (person.isEmpty()) {</span>
+<span class="fc" id="L68">            throw new NotFoundException(&quot;Person not found&quot;);</span>
+        }
+
+<span class="fc" id="L71">        Optional&lt;AddressEntity&gt; address = repository.findById(addressId);</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">        if (address.isEmpty()) {</span>
+<span class="fc" id="L73">            throw new NotFoundException(&quot;Address not found&quot;);</span>
+        }
+
+<span class="fc" id="L76">        AddressEntity newAddress = integration.findCep(addressEntity.getCep());</span>
+<span class="fc" id="L77">        newAddress.setNumber(addressEntity.getNumber());</span>
+<span class="fc" id="L78">        newAddress.setMainAddress(addressEntity.getMainAddress());</span>
+<span class="fc" id="L79">        newAddress.setId(addressId);</span>
+
+<span class="fc" id="L81">        return repository.save(newAddress);</span>
+    }
+
+    public void deleteAddressByPersonId(Long personId, Long addressId) {
+<span class="fc" id="L85">        Optional&lt;AddressEntity&gt; addressOptional = repository.findById(addressId);</span>
+<span class="fc bfc" id="L86" title="All 2 branches covered.">        if (addressOptional.isPresent()) {</span>
+<span class="fc" id="L87">            repository.deleteById(addressId);</span>
+        } else {
+<span class="fc" id="L89">            throw new NotFoundException(&quot;Address with ID &quot; + addressId + &quot; not found for person with ID &quot; + personId);</span>
+        }
+<span class="fc" id="L91">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

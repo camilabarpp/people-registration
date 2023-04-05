@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter
@@ -25,7 +25,7 @@ public class PersonRequest {
     @NotNull(message = "BirthDate can not be null or empty")
     @ApiModelProperty(notes = "Birthdate of the person")
     @JsonFormat(pattern = "dd/MM/yyyy")
-    private Date birthdate;
+    private LocalDate birthdate;
 
     @ApiModelProperty(notes = "Address of the person")
     private List<AddressEntity> addresses;

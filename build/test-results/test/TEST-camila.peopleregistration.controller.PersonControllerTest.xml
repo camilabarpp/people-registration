@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="camila.peopleregistration.controller.PersonControllerTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2023-04-05T13:03:31" hostname="forttiori-Lenovo-ideapad-320-15IKB" time="2.926">
+<testsuite name="camila.peopleregistration.controller.PersonControllerTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2023-04-05T15:02:32" hostname="forttiori-Lenovo-ideapad-320-15IKB" time="2.621">
   <properties/>
-  <testcase name="Deve criar uma pessoa com sucesso" classname="camila.peopleregistration.controller.PersonControllerTest" time="0.235"/>
-  <testcase name="Deve procurar todas as pessoas" classname="camila.peopleregistration.controller.PersonControllerTest" time="0.047"/>
-  <testcase name="Deve deletar uma pessoa com sucesso" classname="camila.peopleregistration.controller.PersonControllerTest" time="0.045"/>
-  <testcase name="Deve lançar NotFoundException quando tentar atualizar uma pessoa inexistente" classname="camila.peopleregistration.controller.PersonControllerTest" time="0.056"/>
-  <testcase name="Deve lançar NotFoundException quando procurar uma pessoa pelo id inexistente" classname="camila.peopleregistration.controller.PersonControllerTest" time="0.038"/>
-  <testcase name="Deve lançar NotFoundException quando tentar deletar uma pessoa inexistente" classname="camila.peopleregistration.controller.PersonControllerTest" time="0.089"/>
-  <testcase name="Deve lançar MethodArgumentNotValidException quando tentar cadastrar uma pessoa sem nome" classname="camila.peopleregistration.controller.PersonControllerTest" time="0.057"/>
-  <testcase name="Deve lançar HttpClientErrorException quando tentar cadastrar uma pessoa com cep invalido" classname="camila.peopleregistration.controller.PersonControllerTest" time="1.315"/>
-  <testcase name="Deve atualizar uma pessoa com sucesso" classname="camila.peopleregistration.controller.PersonControllerTest" time="0.032"/>
-  <testcase name="Deve lancar DataIntegrityViolationException quando tentar cadastrar uma pessoa com nome maior que 100 caracteres" classname="camila.peopleregistration.controller.PersonControllerTest" time="0.867"/>
-  <testcase name="Deve procurar uma pessoa pelo id" classname="camila.peopleregistration.controller.PersonControllerTest" time="0.057"/>
-  <testcase name="Deve deletar todas as pessoas com sucesso" classname="camila.peopleregistration.controller.PersonControllerTest" time="0.068"/>
-  <system-out><![CDATA[2023-04-05 10:03:31.266  INFO 8201 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [camila.peopleregistration.controller.PersonControllerTest], using SpringBootContextLoader
-2023-04-05 10:03:31.267  INFO 8201 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [camila.peopleregistration.controller.PersonControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
-2023-04-05 10:03:31.267  INFO 8201 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [camila.peopleregistration.controller.PersonControllerTest]: PersonControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2023-04-05 10:03:31.269  INFO 8201 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration camila.peopleregistration.PeopleRegistrationApplication for test class camila.peopleregistration.controller.PersonControllerTest
-2023-04-05 10:03:31.270  INFO 8201 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-2023-04-05 10:03:31.271  INFO 8201 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@12b9a9d9, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@3ba8692d, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@49c38db9, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@3359e554, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6cf17587, org.springframework.test.context.support.DirtiesContextTestExecutionListener@14e89835, org.springframework.test.context.transaction.TransactionalTestExecutionListener@41136154, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3d9c4f67, org.springframework.test.context.event.EventPublishingTestExecutionListener@5a26581e, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@adf5a5f, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@509c8391, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@fa41992, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@67aa46d0, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@1757e5d8, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@23637ca8]
+  <testcase name="Deve criar uma pessoa com sucesso" classname="camila.peopleregistration.controller.PersonControllerTest" time="0.396"/>
+  <testcase name="Deve procurar todas as pessoas" classname="camila.peopleregistration.controller.PersonControllerTest" time="0.046"/>
+  <testcase name="Deve deletar uma pessoa com sucesso" classname="camila.peopleregistration.controller.PersonControllerTest" time="0.03"/>
+  <testcase name="Deve lançar NotFoundException quando tentar atualizar uma pessoa inexistente" classname="camila.peopleregistration.controller.PersonControllerTest" time="0.054"/>
+  <testcase name="Deve lançar NotFoundException quando procurar uma pessoa pelo id inexistente" classname="camila.peopleregistration.controller.PersonControllerTest" time="0.041"/>
+  <testcase name="Deve lançar NotFoundException quando tentar deletar uma pessoa inexistente" classname="camila.peopleregistration.controller.PersonControllerTest" time="0.071"/>
+  <testcase name="Deve lançar MethodArgumentNotValidException quando tentar cadastrar uma pessoa sem nome" classname="camila.peopleregistration.controller.PersonControllerTest" time="0.04"/>
+  <testcase name="Deve lançar HttpClientErrorException quando tentar cadastrar uma pessoa com cep invalido" classname="camila.peopleregistration.controller.PersonControllerTest" time="0.93"/>
+  <testcase name="Deve atualizar uma pessoa com sucesso" classname="camila.peopleregistration.controller.PersonControllerTest" time="0.101"/>
+  <testcase name="Deve lancar DataIntegrityViolationException quando tentar cadastrar uma pessoa com nome maior que 100 caracteres" classname="camila.peopleregistration.controller.PersonControllerTest" time="0.797"/>
+  <testcase name="Deve procurar uma pessoa pelo id" classname="camila.peopleregistration.controller.PersonControllerTest" time="0.051"/>
+  <testcase name="Deve deletar todas as pessoas com sucesso" classname="camila.peopleregistration.controller.PersonControllerTest" time="0.033"/>
+  <system-out><![CDATA[2023-04-05 12:02:32.360  INFO 5214 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [camila.peopleregistration.controller.PersonControllerTest], using SpringBootContextLoader
+2023-04-05 12:02:32.361  INFO 5214 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [camila.peopleregistration.controller.PersonControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2023-04-05 12:02:32.361  INFO 5214 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [camila.peopleregistration.controller.PersonControllerTest]: PersonControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-04-05 12:02:32.363  INFO 5214 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration camila.peopleregistration.PeopleRegistrationApplication for test class camila.peopleregistration.controller.PersonControllerTest
+2023-04-05 12:02:32.369  INFO 5214 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2023-04-05 12:02:32.370  INFO 5214 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@7255f867, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@57e78e15, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@64c30a1e, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@2f9f49de, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@72d41a8a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1928b5e3, org.springframework.test.context.transaction.TransactionalTestExecutionListener@65c7cf22, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@30c3bbfd, org.springframework.test.context.event.EventPublishingTestExecutionListener@6291f725, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@3ecad139, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@65afa71d, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@489ee406, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@255b1aef, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@4df05464, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@557f8588]
 Hibernate: insert into person_entity (id, birthdate, name, status) values (null, ?, ?, ?)
 Hibernate: insert into address_entity (id, cep, city, main_address, neighborhood, number, street, uf) values (null, ?, ?, ?, ?, ?, ?, ?)
 Hibernate: update address_entity set person_entity_id=? where id=?
@@ -211,7 +211,7 @@ MockHttpServletResponse:
     Error message = null
           Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json"]
      Content type = application/json
-             Body = {"message":"Person not found","field":"NOT_FOUND","parameter":"NotFoundException","timestamp":"2023-04-05T10:03:31"}
+             Body = {"message":"Person not found","field":"NOT_FOUND","parameter":"NotFoundException","timestamp":"2023-04-05T12:02:32"}
     Forwarded URL = null
    Redirected URL = null
           Cookies = []
@@ -261,7 +261,7 @@ MockHttpServletResponse:
     Error message = null
           Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json"]
      Content type = application/json
-             Body = {"message":"Person not found","field":"NOT_FOUND","parameter":"NotFoundException","timestamp":"2023-04-05T10:03:31"}
+             Body = {"message":"Person not found","field":"NOT_FOUND","parameter":"NotFoundException","timestamp":"2023-04-05T12:02:32"}
     Forwarded URL = null
    Redirected URL = null
           Cookies = []
@@ -311,7 +311,7 @@ MockHttpServletResponse:
     Error message = null
           Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json"]
      Content type = application/json
-             Body = {"message":"Person not found","field":"NOT_FOUND","parameter":"NotFoundException","timestamp":"2023-04-05T10:03:31"}
+             Body = {"message":"Person not found","field":"NOT_FOUND","parameter":"NotFoundException","timestamp":"2023-04-05T12:02:33"}
     Forwarded URL = null
    Redirected URL = null
           Cookies = []
@@ -360,7 +360,7 @@ MockHttpServletResponse:
     Error message = null
           Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json"]
      Content type = application/json
-             Body = {"message":"Name can not be null or empty","field":"BAD_REQUEST","parameter":"MethodArgumentNotValidException","timestamp":"2023-04-05T10:03:31"}
+             Body = {"message":"Name can not be null or empty","field":"BAD_REQUEST","parameter":"MethodArgumentNotValidException","timestamp":"2023-04-05T12:02:33"}
     Forwarded URL = null
    Redirected URL = null
           Cookies = []
@@ -408,7 +408,7 @@ MockHttpServletResponse:
     Error message = null
           Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json"]
      Content type = application/json
-             Body = {"message":"Insert a valid CEP","field":"BAD_REQUEST","parameter":"BadRequest","timestamp":"2023-04-05T10:03:32"}
+             Body = {"message":"Insert a valid CEP","field":"BAD_REQUEST","parameter":"BadRequest","timestamp":"2023-04-05T12:02:33"}
     Forwarded URL = null
    Redirected URL = null
           Cookies = []
@@ -474,8 +474,8 @@ Hibernate: insert into address_entity (id, cep, city, main_address, neighborhood
 Hibernate: update address_entity set person_entity_id=? where id=?
 Hibernate: insert into address_entity (id, cep, city, main_address, neighborhood, number, street, uf) values (null, ?, ?, ?, ?, ?, ?, ?)
 Hibernate: insert into person_entity (id, birthdate, name, status) values (null, ?, ?, ?)
-2023-04-05 10:03:33.840  WARN 8201 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 22001, SQLState: 22001
-2023-04-05 10:03:33.840 ERROR 8201 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : Value too long for column "NAME VARCHAR(100)": "'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy ... (574)"; SQL statement:
+2023-04-05 12:02:34.676  WARN 5214 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 22001, SQLState: 22001
+2023-04-05 12:02:34.678 ERROR 5214 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : Value too long for column "NAME VARCHAR(100)": "'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy ... (574)"; SQL statement:
 insert into person_entity (id, birthdate, name, status) values (null, ?, ?, ?) [22001-200]
 
 MockHttpServletRequest:
@@ -510,13 +510,13 @@ MockHttpServletResponse:
     Error message = null
           Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json"]
      Content type = application/json
-             Body = {"message":"Impossible insert do database, object with invalid size","field":"BAD_REQUEST","parameter":"DataIntegrityViolationException","timestamp":"2023-04-05T10:03:33"}
+             Body = {"message":"Impossible insert do database, object with invalid size","field":"BAD_REQUEST","parameter":"DataIntegrityViolationException","timestamp":"2023-04-05T12:02:34"}
     Forwarded URL = null
    Redirected URL = null
           Cookies = []
 Hibernate: insert into person_entity (id, birthdate, name, status) values (null, ?, ?, ?)
-2023-04-05 10:03:34.057  WARN 8201 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 22001, SQLState: 22001
-2023-04-05 10:03:34.057 ERROR 8201 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : Value too long for column "NAME VARCHAR(100)": "'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy ... (574)"; SQL statement:
+2023-04-05 12:02:34.890  WARN 5214 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 22001, SQLState: 22001
+2023-04-05 12:02:34.890 ERROR 5214 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : Value too long for column "NAME VARCHAR(100)": "'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy ... (574)"; SQL statement:
 insert into person_entity (id, birthdate, name, status) values (null, ?, ?, ?) [22001-200]
 Hibernate: select personenti0_.id as id1_1_, personenti0_.birthdate as birthdat2_1_, personenti0_.name as name3_1_, personenti0_.status as status4_1_ from person_entity personenti0_ where ( personenti0_.status = 'Ativo')
 Hibernate: select addresses0_.person_entity_id as person_e9_0_0_, addresses0_.id as id1_0_0_, addresses0_.id as id1_0_1_, addresses0_.cep as cep2_0_1_, addresses0_.city as city3_0_1_, addresses0_.main_address as main_add4_0_1_, addresses0_.neighborhood as neighbor5_0_1_, addresses0_.number as number6_0_1_, addresses0_.street as street7_0_1_, addresses0_.uf as uf8_0_1_ from address_entity addresses0_ where addresses0_.person_entity_id=?

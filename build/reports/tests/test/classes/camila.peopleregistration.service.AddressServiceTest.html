@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.107s</div>
+<div class="counter">0.055s</div>
 <p>duration</p>
 </div>
 </td>
@@ -81,67 +81,67 @@
 <tr>
 <td class="success">Deve criar um novo endereço com sucesso</td>
 <td class="success">createAddress_ShouldReturnNewAddress()</td>
-<td class="success">0.010s</td>
+<td class="success">0.006s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">createNewAddress_PersonNotFound()</td>
 <td class="success">createNewAddress_PersonNotFound()</td>
-<td class="success">0.007s</td>
+<td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Deve retornar endereços pelo id da pessoa</td>
 <td class="success">getAddressesByPersonId_ShouldReturnAddressList()</td>
-<td class="success">0.006s</td>
+<td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Pesquisar CEP com sucesso</td>
 <td class="success">searchCep_ShouldReturnNewAddress()</td>
-<td class="success">0.006s</td>
+<td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Deve lançar NotFoundException quando o CEP for vazio</td>
 <td class="success">searchCep_ShouldThrowNotFoundException()</td>
-<td class="success">0.005s</td>
+<td class="success">0.002s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Deve lançar NotFoundException quando tentar deletar pelo id inválido</td>
 <td class="success">shouldDeleteAddressByPersonId_AddressNotFound()</td>
-<td class="success">0.010s</td>
+<td class="success">0.004s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Deve deletar um endereço com sucesso</td>
 <td class="success">shouldDeleteAddressWithSuccess()</td>
-<td class="success">0.030s</td>
+<td class="success">0.016s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Deve lançar NotFoundException quando não achar um endereço pelo ID</td>
 <td class="success">shouldThrowNotFoundExceptionWhenFindInvalidAddresId()</td>
-<td class="success">0.009s</td>
+<td class="success">0.004s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Deve lançar NotFoundException quando não achar uma pessoa pelo ID</td>
 <td class="success">shouldThrowNotFoundExceptionWhenFindInvalidPersonId()</td>
-<td class="success">0.011s</td>
+<td class="success">0.006s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Deve lançar NotFoundException quando não achar o ID</td>
 <td class="success">shouldThrowNotFoundExceptionWhenIdNotFound()</td>
-<td class="success">0.006s</td>
+<td class="success">0.004s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">shouldfUpdateAddressByPersonId_Success()</td>
 <td class="success">shouldfUpdateAddressByPersonId_Success()</td>
-<td class="success">0.007s</td>
+<td class="success">0.004s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -149,11 +149,11 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>2023-04-05 10:03:39.539  INFO 8201 --- [    Test worker] o.s.t.c.s.DefaultTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [camila.peopleregistration.service.AddressServiceTest], using DelegatingSmartContextLoader
-2023-04-05 10:03:39.539  INFO 8201 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [camila.peopleregistration.service.AddressServiceTest]: no resource found for suffixes {-context.xml}.
-2023-04-05 10:03:39.540  INFO 8201 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [camila.peopleregistration.service.AddressServiceTest]: AddressServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2023-04-05 10:03:39.541  INFO 8201 --- [    Test worker] o.s.t.c.s.DefaultTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-2023-04-05 10:03:39.542  INFO 8201 --- [    Test worker] o.s.t.c.s.DefaultTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@28d43ed9, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@432dcb2c, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@164adfeb, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@bc986a2, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@26243f4, org.springframework.test.context.support.DirtiesContextTestExecutionListener@2fbb9c3f, org.springframework.test.context.transaction.TransactionalTestExecutionListener@6fcebba4, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@28f5dc69, org.springframework.test.context.event.EventPublishingTestExecutionListener@38985760, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@4bb17e28, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@51b8ef61, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@57a877ab, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@2df11969, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@6df172c1, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@7b244bf9]
+<pre>2023-04-05 12:02:37.311  INFO 5214 --- [    Test worker] o.s.t.c.s.DefaultTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [camila.peopleregistration.service.AddressServiceTest], using DelegatingSmartContextLoader
+2023-04-05 12:02:37.312  INFO 5214 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [camila.peopleregistration.service.AddressServiceTest]: no resource found for suffixes {-context.xml}.
+2023-04-05 12:02:37.313  INFO 5214 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [camila.peopleregistration.service.AddressServiceTest]: AddressServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-04-05 12:02:37.314  INFO 5214 --- [    Test worker] o.s.t.c.s.DefaultTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2023-04-05 12:02:37.315  INFO 5214 --- [    Test worker] o.s.t.c.s.DefaultTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@399eaf9, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1acb1c26, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@9cfddc9, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@22947281, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@6e168a08, org.springframework.test.context.support.DirtiesContextTestExecutionListener@2c7e91c0, org.springframework.test.context.transaction.TransactionalTestExecutionListener@5b283013, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@5a29518d, org.springframework.test.context.event.EventPublishingTestExecutionListener@35c60a, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@589db75d, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@42afacf5, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@529a3814, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@7cb1b1db, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@49a3d64f, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@7654038a]
 </pre>
 </span>
 </div>
@@ -165,7 +165,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.4.2</a> at 5 de abr. de 2023 10:03:40</p>
+<a href="http://www.gradle.org">Gradle 8.0</a> at 5 de abr. de 2023 12:02:38</p>
 </div>
 </div>
 </body>
